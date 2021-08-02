@@ -24,7 +24,7 @@
                 <a class="nav-link" href="#" th:href="@{/}">지도로 이동<span class="sr-only" th:if="${menu} == 'home'"></span></a>
             </li>
             <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/pig/donjunam}">정보<span class="sr-only" th:if="${menu} == 'board'"></span></a>
+                <a class="nav-link" href="#" th:href="@{/board/information}">정보<span class="sr-only" th:if="${menu} == 'info'"></span></a>
             </li>
             <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
                 <a class="nav-link" href="#" th:href="@{/board/list}">후기<span class="sr-only" th:if="${menu} == 'board'"></span></a>

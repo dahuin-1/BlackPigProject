@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PigController {
 
-    @GetMapping("pig/donjunam")
+    @GetMapping("board/information")
     public String pig() {
-        return "pig/donjunam";
+        return "board/information";
     }
 
 }
