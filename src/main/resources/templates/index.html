@@ -59,11 +59,25 @@
     };
   }
 
+  function getBoard(id) {
+    //POST /api/boards/{id}
+    $.ajax({
+      url: '/api/boards/' + id,
+      type: 'GET',
+      success: function(result) {
+        console.log('result',result);
+        //window.location.href = '/board/list';
+      }
+    });
+  }
+
   function makeClickListener() {
     return function() {
       window.location.href = '/board/information';
     };
   }
+
+
 
   function makeOutListener(infowindow) {
     return function() {
