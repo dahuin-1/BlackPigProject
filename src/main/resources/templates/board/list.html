@@ -19,7 +19,22 @@
   <div class="container">
     <h1>후기 게시판</h1>
     <div>총 건수 : <span th:text="${#lists.size(boards)}"> </span></div>
-
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">번호</th>
+        <th scope="col">제목</th>
+        <th scope="col">작성자</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="board : ${boards}">
+        <td th:text="${board.id}">Mark</th>
+        <td th:text="${board.title}">Otto</td>
+        <td>김다흰</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </main>
 <footer th:replace="fragments/common :: footer">
