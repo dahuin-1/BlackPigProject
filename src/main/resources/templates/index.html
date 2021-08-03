@@ -7,25 +7,28 @@
 <body>
 <div id="map" style="width:100vw;height:100vh;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dbbe2da30ca80968723394ba0f93d23b"></script>
-<script>
+<script th:inline="javascript">
   var mapContainer = document.getElementById('map');
   mapOption = {
     center: new kakao.maps.LatLng(37.4981646510326, 127.028307900881),
     level: 5
   };
   var map = new kakao.maps.Map(mapContainer, mapOption);
-
+  /*<![CDATA[*/
+  const boardList = [[${boards}]];
+  console.log(boardList);
+  /*]]>*/
   var positions = [
     {
-      content: '<div>육덕식당</div>',
+      content: '<div>'+boardList[0].title+'</div>',
       latlng: new kakao.maps.LatLng(37.5060373, 127.0253441)
     },
     {
-      content: '<div>김돈이</div>',
+      content: '<div>'+boardList[1].title+'</div>',
       latlng: new kakao.maps.LatLng(37.5061068, 127.0492459)
     },
     {
-      content: '<div>돈주남</div>',
+      content: '<div>'+boardList[2].title+'</div>',
       latlng: new kakao.maps.LatLng(37.5519471, 126.9210969)
     },
   ];
@@ -85,6 +88,5 @@
     };
   }
 </script>
-
 </body>
 </html>
