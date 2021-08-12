@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PigController {
+public class StoreController {
 
     @GetMapping("board/information")
     public String pig() {
@@ -12,4 +12,3 @@ public class PigController {
     }
 
 }
-
