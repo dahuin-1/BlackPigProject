@@ -51,7 +51,6 @@
     });
 
     kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-    kakao.maps.event.addListener(marker, 'click', makeClickListener());
     kakao.maps.event.addListener(marker, 'click', makeClickListener(positions[i].id));
     kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
   }
@@ -75,21 +74,12 @@
   }
 
   function makeClickListener(id) {
-    /*$.ajax({
-      url: '/board/information/' + id,
-      type: 'GET',
-      success: function(result) {
-        console.log('result',result);
-        //window.location.href = '/board/list';
-      }
-    });*/
     return function() {
-     // window.location.href = '/board/information';
-      window.location.href = '/board/information/';
+      window.location.href = '/board/information/'+id;
     };
   }
 
- // console.log("hello")
+  console.log("hello")
 
   function makeOutListener(infowindow) {
     return function() {
