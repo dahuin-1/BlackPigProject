@@ -21,15 +21,18 @@
   var positions = [
     {
       content: '<div>'+storeList[0].name+'</div>',
-      latlng: new kakao.maps.LatLng(37.5060373, 127.0253441)
+      latlng: new kakao.maps.LatLng(37.5060373, 127.0253441),
+      id : 1
     },
     {
       content: '<div>'+storeList[1].name+'</div>',
-      latlng: new kakao.maps.LatLng(37.5061068, 127.0492459)
+      latlng: new kakao.maps.LatLng(37.5061068, 127.0492459),
+      id : 2
     },
     {
       content: '<div>'+storeList[2].name+'</div>',
-      latlng: new kakao.maps.LatLng(37.5519471, 126.9210969)
+      latlng: new kakao.maps.LatLng(37.5519471, 126.9210969),
+      id : 3
     },
   ];
   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -76,10 +79,11 @@
   function makeClickListener(id) {
     return function() {
       window.location.href = '/board/information/'+id;
+      console.log("hello")
     };
   }
 
-  console.log("hello")
+
 
   function makeOutListener(infowindow) {
     return function() {
