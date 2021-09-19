@@ -16,12 +16,19 @@
 
 <!-- Begin page content -->
 <main role="main" class="container">
-    <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/information}">
+    <!--<form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/information}">
         <div class="form-group mx-sm-3 mb-2">
             <label for="storeId" class="visually-hidden">검색</label>
             <input type="text" class="form-control" id="storeId" name="storeId" th:value="${param.storeId}">
         </div>
+    </form>-->
+    <div th:each="store : ${stores}">
+    <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/information(id=${store.id)}">
+        <!--(id=${1)}">-->
+        <p class="lead">넘어왔습니다<br>
+            test</p>
     </form>
+    </div>
     <div class="starter-template">
         <h1>흑돼지맵 {가게 id}</h1>
         <p class="lead">대충 가게 정보랑 맵이랑 불러올예정 <br>

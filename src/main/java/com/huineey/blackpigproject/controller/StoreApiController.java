@@ -1,13 +1,9 @@
 package com.huineey.blackpigproject.controller;
 
 import com.huineey.blackpigproject.model.Store;
-import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.util.StringUtils;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -17,8 +13,8 @@ class StoreApiController {
     private StoreRepository storeRepository;
 
     @GetMapping("/stores/{id}")
-    Store one(@RequestParam(required = false, defaultValue = "") String storeId) {
-        return storeRepository.findById(storeId);
+    Store one(@RequestParam(required = false, defaultValue = "") Long id) {
+        return storeRepository.findById(id).orElse(null);
     }
 
    /* @GetMapping("/boards")

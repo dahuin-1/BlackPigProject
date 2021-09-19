@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface StoreRepository extends JpaRepository<Store, Long> {
     List<Store> findAll();
-    Store findById(String storeId);
+    List<Store> findOneById(Long id);
+   // Store findById(String storeId);
 }
 
