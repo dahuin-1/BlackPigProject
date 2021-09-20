@@ -19,7 +19,6 @@
   <div class="container">
     <h1>후기 게시판</h1>
     <div>총 건수 : <span th:text="${#lists.size(boards)}"> </span></div>
-
     <table class="table table-striped">
       <thead>
       <tr>
@@ -36,7 +35,7 @@
       </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-dark">쓰기</button>
+    <button type="button" class="btn btn-dark"th:href="@{/board/form}">쓰기</button>
   </div>
 </main>
 <footer th:replace="fragments/common :: footer">
