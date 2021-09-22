@@ -36,11 +36,11 @@ public class StoreController {
         return "board/information";
     }
 
-    @GetMapping("board/information/{id}")
+  /*  @GetMapping("board/information/{id}")
     public String info(Model model, @PathVariable Long id) {
         Store store = storeRepository.findById(id).orElse(null);
         model.addAttribute("store", store);
         //return "board/detail";
         return "board/information";
-    }
+    }*/
 }
