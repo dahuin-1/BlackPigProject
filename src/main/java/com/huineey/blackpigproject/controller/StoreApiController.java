@@ -17,7 +17,9 @@ class StoreApiController {
         return storeRepository.findById(id).orElse(null);
     }
 
+
    /* @GetMapping("/boards")
+   sds
     List<Board> all(@RequestParam(required = false, defaultValue = "") String title,
                     @RequestParam(required = false, defaultValue = "") String content) {
         if(StringUtils.isEmpty(title) && StringUtils.isEmpty(content)) {
