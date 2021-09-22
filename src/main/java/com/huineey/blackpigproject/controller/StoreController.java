@@ -4,6 +4,7 @@ import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.StoreRepository;
+import com.huineey.blackpigproject.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,24 +22,25 @@ public class StoreController {
     @Autowired
     private StoreRepository storeRepository;
 
-  //  @Autowired
-  //  private Store store;
+    @Autowired
+    private StoreService storeService;
 
 
     @GetMapping("board/information")
     public String info(Model model) {
-        Long id = new Long(1);
-      //  String name = store.getName();
-       // Long id = storeRepository.findByName(name);
-        Store stores = storeRepository.findById(id).orElse(null);
+        List<Store> stores = storeRepository.findAll();
         model.addAttribute("stores", stores);
+        for (int i = 0; i < stores.size(); i++) {
+            System.out.println(stores.get(i).getId());
+        }
         return "board/information";
     }
 
     @GetMapping("board/information/{id}")
     public String info(Model model, @PathVariable Long id) {
-        Store stores = storeRepository.findById(id).orElse(null);
-        model.addAttribute("stores", stores);
+        Store store = storeRepository.findById(id).orElse(null);
+        model.addAttribute("store", store);
+        //return "board/detail";
         return "board/information";
     }
 }

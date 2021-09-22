@@ -14,4 +14,8 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    public String getName() {
+        return this.name;
+    }
 }
