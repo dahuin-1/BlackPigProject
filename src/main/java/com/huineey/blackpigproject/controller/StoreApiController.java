@@ -16,8 +16,7 @@ class StoreApiController {
     Store one(@RequestParam(required = false, defaultValue = "") Long id) {
         return storeRepository.findById(id).orElse(null);
     }
-    // hello
-    // hihi
+//jojojo //
    /* @GetMapping("/boards")
     List<Board> all(@RequestParam(required = false, defaultValue = "") String title,
                     @RequestParam(required = false, defaultValue = "") String content) {
