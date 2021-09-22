@@ -104,10 +104,10 @@
     </div>
 
     <div class="starter-template">
+        <br>
         <h1>삐슐랭가이드</h1>
         <p class="lead">방문한 식당들의 평점과 리뷰, 재방문 의사를 수집합니다. <br>
             자세한 후기가 궁금하다면 사진을 눌러주세요
-            <br>
             <br>
         </p>
     </div>
@@ -116,12 +116,12 @@
     <hr class="featurette-divider">
 
     <div class="row featurette">
-        <div class="col-md-7 order-md-2">
+        <div class="col-md-7 order-md-2" th:each="store : ${}">
             <h2 class="featurette-heading">2021. <span class="text-muted">정식당</span></h2>
             <p class="lead">서울 강남구 선릉로158길 11</p>
         </div>
         <div class="col-md-5 order-md-1">
-            <a th:href="@{/board/list}"><img
+            <a th:href="@{/board/list(id=${stores.id})}"><img
                     src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210719071706877_photo_2f50fd31593a.jpg"
                     alt="" width="300" height="300"></a>
             <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
@@ -137,10 +137,13 @@
         </div>
         <div class="col-md-5 order-md-1">
             <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" focusable="false">
-              --> <a th:href="@{/board/list}"> <img
-                src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
-                alt="" width="300" height="300"></a>
+              -->
+            <a th:href="@{/board/list}"> <img
+                    src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
+                    alt="" width="300" height="300"> </a>
             <!-- <rect width="100%" height="100%" fill="#eee"/>-->
+            <!--th:value="${param.storeId}"-->
+            <!--(id=${stores.id})}-->
             <!-- <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>-->
             </svg>
         </div>

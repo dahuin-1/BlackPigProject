@@ -37,6 +37,17 @@ public class BoardController {
         return "board/list";
     }
 
+    /*
+      @GetMapping("board/list")
+       public String list(Model model, @PageableDefault(size = 2) Pageable pageable, @RequestParam(required = false, defaultValue = "")String searchText) {
+        Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
+        int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
+        model.addAttribute("boards", boards);
+        return "board/list";
+    }
+     */
+
     @GetMapping("/form")
     public String form(Model model, @RequestParam(required = false) Long id) {
         if(id == null){
