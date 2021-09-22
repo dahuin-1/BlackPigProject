@@ -95,13 +95,13 @@
     </button>
 </div>
 <main role="main" class="container">
-    <div th:each="store : ${stores}">
-        <form class="form-inline d-flex justify-content-end" method="GET"
-              th:action="@{/board/information(id=${stores.id})}">
-            <p class="lead">넘어왔습니다<br>
-                test</p>
-        </form>
-    </div>
+    <!--  <div th:each="store : ${stores}">
+          <form class="form-inline d-flex justify-content-end" method="GET"
+                th:action="@{/board/information(id=${stores.id})}">
+              <p class="lead">넘어왔습니다<br>
+                  test</p>
+          </form>
+      </div>-->
 
     <div class="starter-template">
         <br>
@@ -113,80 +113,86 @@
     </div>
 
 
-    <hr class="featurette-divider">
+    <hr class="featurette-divider"/>
+        <div th:each="stores : ${stores}">
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">2021. <span class="text-muted">정식당</span></h2>
+                    <p class="lead">서울 강남구 선릉로158길 11</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <a th:href="@{/board/list(id=${stores.id})}"><img
+                            src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210719071706877_photo_2f50fd31593a.jpg"
+                            alt="" width="300" height="300"></a>
+                    <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
+                </div>
+            </div>
 
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2" th:each="store : ${}">
-            <h2 class="featurette-heading">2021. <span class="text-muted">정식당</span></h2>
-            <p class="lead">서울 강남구 선릉로158길 11</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <a th:href="@{/board/list(id=${stores.id})}"><img
-                    src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210719071706877_photo_2f50fd31593a.jpg"
-                    alt="" width="300" height="300"></a>
-            <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
-        </div>
-    </div>
+            <hr class="featurette-divider">
 
-    <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">2021. <span class="text-muted"> 모퉁이우</span></h2>
+                    <p class="lead">서울 강남구 삼성동 영동대로96길 26</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" focusable="false">
+                      -->
+                    <a th:href="@{/board/list(id=${stores.id})}"> <img
+                            src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
+                            alt="" width="300" height="300"> </a>
+                    <!-- <rect width="100%" height="100%" fill="#eee"/>-->
+                    <!--th:value="${param.storeId}"-->
+                    <!--(id=${stores.id})}-->
+                    <!-- <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>-->
+                    </svg>
+                </div>
+            </div>
 
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">2021. <span class="text-muted"> 모퉁이우</span></h2>
-            <p class="lead">서울 강남구 삼성동 영동대로96길 26</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" focusable="false">
-              -->
-            <a th:href="@{/board/list}"> <img
-                    src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
-                    alt="" width="300" height="300"> </a>
-            <!-- <rect width="100%" height="100%" fill="#eee"/>-->
-            <!--th:value="${param.storeId}"-->
-            <!--(id=${stores.id})}-->
-            <!-- <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>-->
-            </svg>
-        </div>
-    </div>
+            <hr class="featurette-divider">
 
-    <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
+                        really
+                        intended to be actually read, simply here to give you a better view of what this would look like
+                        with
+                        some actual content. Your content.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                         height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee"/>
+                        <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+                    </svg>
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
-                intended to be actually read, simply here to give you a better view of what this would look like with
-                some actual content. Your content.</p>
-        </div>
-        <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                 height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#eee"/>
-                <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+                </div>
+            </div>
 
-        </div>
-    </div>
+            <hr class="featurette-divider">
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span>
-            </h2>
-            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this
-                layout would work with some actual real-world content in place.</p>
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span
+                            class="text-muted">See for yourself.</span>
+                    </h2>
+                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of
+                        how
+                        this
+                        layout would work with some actual real-world content in place.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                         height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee"/>
+                        <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+                    </svg>
+                </div>
+            </div>
         </div>
-        <div class="col-md-5 order-md-1">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                 height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#eee"/>
-                <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
-        </div>
-    </div>
 
     <!-- /END THE FEATURETTES -->
 

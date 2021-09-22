@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface StoreRepository extends JpaRepository<Store, Long> {
     List<Store> findAll();
     List<Store> findOneById(Long id);
-   // Store findById(String storeId);
+
+    Long findByName(String name);
+    // Store findById(String storeId);
 }
 

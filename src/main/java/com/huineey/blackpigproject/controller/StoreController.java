@@ -10,10 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,13 +21,24 @@ public class StoreController {
     @Autowired
     private StoreRepository storeRepository;
 
+  //  @Autowired
+  //  private Store store;
+
 
     @GetMapping("board/information")
-    public String info(Model model, @RequestParam(required = false, defaultValue = "") Long id) {
+    public String info(Model model) {
+        Long id = new Long(1);
+      //  String name = store.getName();
+       // Long id = storeRepository.findByName(name);
         Store stores = storeRepository.findById(id).orElse(null);
         model.addAttribute("stores", stores);
         return "board/information";
     }
 
-
+    @GetMapping("board/information/{id}")
+    public String info(Model model, @PathVariable Long id) {
+        Store stores = storeRepository.findById(id).orElse(null);
+        model.addAttribute("stores", stores);
+        return "board/information";
+    }
 }
