@@ -10,4 +10,6 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<Board, Long> {
     List<Board> findAll();
     Page<Board> findByTitleContainingOrContentContaining(String searchText, String searchText1, Pageable pageable);
+
+    List<Board> findByTitleOrContent(String title, String content);
 }

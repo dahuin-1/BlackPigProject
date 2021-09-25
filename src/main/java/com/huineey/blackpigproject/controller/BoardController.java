@@ -37,26 +37,17 @@ public class BoardController {
         return "board/list";
     }
 
-    /*
-      @GetMapping("board/list")
-       public String list(Model model, @PageableDefault(size = 2) Pageable pageable, @RequestParam(required = false, defaultValue = "")String searchText) {
-        Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
-        int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
-        int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
-        model.addAttribute("boards", boards);
-        return "board/list";
-    }
-     */
-
     @GetMapping("/form")
     public String form(Model model, @RequestParam(required = false) Long id) {
+        //(required = false) 필수인지 아닌지, 새글을 작성할때는 파라미터가 필요 없다
         if(id == null){
-             model.addAttribute("board", new Board());
+            model.addAttribute("board", new Board());
+            //아이디가 null이면 새 보드 클래스를 생성해서 form에 넘김
         } else {
-            Board board = boardRepository.findById(id).orElse(null);
-            // List<Comment> comments = commentRepository.findCommentsByBoard(board);
+            Board boards = boardRepository.findById(id).orElse(null);
+           // List<Comment> comments = commentRepository.findCommentsByBoard(board);
             //boardRepository 에서 아이디로 값을 찾아서 넘긴다. 아이디가 없으면 null을 넘긴다.
-            model.addAttribute("boards", board);
+            model.addAttribute("boards", boards);
             //model.addAttribute("comments",comments);
         }
         return "board/form";
@@ -70,9 +61,14 @@ public class BoardController {
         }
         //Authentication a = SecurityContextHolder.getContext().getAuthentication(); 컨트롤러가 아닌 서비스 클래스에선 이렇게
         String username = "주인장";
+                //authentication.getName();
         boardService.save(username, board);
-        boardRepository.save(board);
+        //    boardRepository.save(board);
+        /*
+        id의 키값이 있으면 업데이트, 없으면 인서트
+         */
         return "redirect:/board/list"; //리스트로 리다이렉트가 되면, 리스트에서 다시 한번 조회가 되면서 화면이 이동
     }
+
 
 }
