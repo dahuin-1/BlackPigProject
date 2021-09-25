@@ -14,6 +14,9 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String address;
+    private Long year;
+    private String image;
 
     public String getName() {
         return this.name;

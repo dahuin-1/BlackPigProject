@@ -114,52 +114,33 @@
 
     <hr class="featurette-divider"/>
     <div th:each="stores : ${stores}">
-      <!--  <div th:each="store : ${store}">-->
+        <!--  <div th:each="store : ${store}">-->
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">2021. <span th:text="${stores.name}"></span></h2>
-                <p class="lead">서울 강남구 선릉로158길 11</p>
+                <span th:text="${stores.year}"></span>
+                <h2 class="featurette-heading" th:text="${stores.name}"></h2>
+                <p class="lead" th:text="${stores.address}"></p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a th:href="@{/board/detail/${stores.id}}"><img
-                        src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210719071706877_photo_2f50fd31593a.jpg"
-                        alt="" width="300" height="300"></a>
-                <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
+                <a th:href="@{/board/detail/${stores.id}}"><img th:src="${stores.image}" alt="" width="300"
+                                                                height="300"></a>
             </div>
         </div>
         <!--<hr class="featurette-divider">-->
-      <!--  <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">2021. <span class="text-muted"> 모퉁이우</span></h2>
-                <p class="lead">서울 강남구 삼성동 영동대로96길 26</p>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <a th:href="@{/board/information/${stores.id}}"> <img
-                        src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
-                        alt="" width="300" height="300"> </a>
-            </div>
-       </div>-->
+        <!--  <div class="row featurette">
+              <div class="col-md-7 order-md-2">
+                  <h2 class="featurette-heading">2021. <span class="text-muted"> 모퉁이우</span></h2>
+                  <p class="lead">서울 강남구 삼성동 영동대로96길 26</p>
+              </div>
+              <div class="col-md-5 order-md-1">
+                  <a th:href="@{/board/information/${stores.id}}"> <img
+                          src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
+                          alt="" width="300" height="300"> </a>
+              </div>
+         </div>-->
 
         <hr class="featurette-divider">
-       <!-- <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
-                    really
-                    intended to be actually read, simply here to give you a better view of what this would look like
-                    with
-                    some actual content. Your content.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee"/>
-                    <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-                </svg>
 
-            </div>
-        </div>-->
     </div>
 
     <!-- /END THE FEATURETTES -->
