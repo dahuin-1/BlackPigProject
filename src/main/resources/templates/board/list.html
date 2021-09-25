@@ -12,14 +12,15 @@
 </head>
 <body>
 <!-- Fixed navbar -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('home')"></nav>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('list')"></nav>
 
 <!-- Begin page content -->
 <main role="main" class="container">
+
   <div class="container">
     <h1>후기 게시판</h1>
-    <div>총 건수 : <span th:text="${#lists.size(boards)}"> </span></div>
-    <table class="table table-striped">
+    <div>총 건수 : <span th:text="${boards.totalElements}"></span></div>
+    <table class="table">
       <thead>
       <tr>
         <th scope="col">번호</th>
@@ -29,12 +30,28 @@
       </thead>
       <tbody>
       <tr th:each="board : ${boards}">
-        <td th:text="${board.id}">Mark</th>
+        <td th:text="${board.id}">1</th>
         <td th:text="${board.title}"th:href="@{/board/form(id=${board.id})}">Otto</a></td>
         <td>김다흰</td>
       </tr>
       </tbody>
     </table>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber - 1}, searchText=${param.searchText})}"
+             tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item" th:classappend="${i == boards.pageable.pageNumber + 1} ? 'disabled'"
+            th:each="i : ${#numbers.sequence(startPage, endPage)}">
+          <a class="page-link" herf="#" th:href="@{/board/list(page=${i - 1}, searchText=${param.searchText})}" th:text="${i}">1</a>
+        </li>
+        <!--th:href="@{/board/list/(page =${i})}"></a></li-->
+        <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber + 1}, searchText=${param.searchText})}">Next</a>
+        </li>
+      </ul>
+    </nav>
     <button type="button" class="btn btn-dark"th:href="@{/board/form}">쓰기</button>
   </div>
 </main>
