@@ -22,20 +22,20 @@ public class StoreController {
     @Autowired
     private StoreRepository storeRepository;
 
-    @Autowired
-    private StoreService storeService;
-    private Store id;
-
 
     @GetMapping("board/information")
     public String info(Model model) {
         List<Store> stores = storeRepository.findAll();
         model.addAttribute("stores", stores);
-        for (int i = 0; i < stores.size(); i++) {
-            System.out.println(stores.get(i).getId());
-        }
         return "board/information";
     }
+
+    /*@GetMapping("board/detail")
+    public String detail(Model model) {
+        List<Store> stores = storeRepository.findAll();
+        model.addAttribute("stores", stores);
+        return "board/detail";
+    }*/
 
     @GetMapping("board/detail")
     public String one(Model model, @RequestParam(required = false, defaultValue = "") Long id) {
