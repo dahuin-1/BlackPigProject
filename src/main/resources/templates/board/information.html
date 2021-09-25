@@ -114,7 +114,6 @@
 
     <hr class="featurette-divider"/>
     <div th:each="stores : ${stores}">
-        <!--  <div th:each="store : ${store}">-->
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <span th:text="${stores.year}"></span>
@@ -142,8 +141,6 @@
         <hr class="featurette-divider">
 
     </div>
-
-    <!-- /END THE FEATURETTES -->
 </main>
 <footer th:replace="fragments/common :: footer">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
