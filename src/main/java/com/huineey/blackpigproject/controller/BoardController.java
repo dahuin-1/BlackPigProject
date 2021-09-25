@@ -34,7 +34,7 @@ public class BoardController {
     private BoardValidator boardValidator;
 
     @GetMapping("list")
-    public String list(Model model, @PageableDefault(size = 2) Pageable pageable,
+    public String list(Model model, @PageableDefault(size = 10) Pageable pageable,
                        @RequestParam(required = false, defaultValue = "") String searchText) {
        // List<Board> boards = boardRepository.findAll();
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
@@ -48,15 +48,11 @@ public class BoardController {
 
     @GetMapping("/form")
     public String form(Model model, @RequestParam(required = false) Long id) {
-        //(required = false) 필수인지 아닌지, 새글을 작성할때는 파라미터가 필요 없다
         if(id == null){
             model.addAttribute("board", new Board());
-            //아이디가 null이면 새 보드 클래스를 생성해서 form에 넘김
         } else {
             Board board = boardRepository.findById(id).orElse(null);
            // List<Comment> comments = commentRepository.findCommentsByBoard(board);
-            //boardRepository 에서 아이디로 값을 찾아서 넘긴다. 아이디가 없으면 null을 넘긴다.
-
             model.addAttribute("board", board);
             //model.addAttribute("comments",comments);
         }

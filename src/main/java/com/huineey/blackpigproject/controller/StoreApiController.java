@@ -1,5 +1,6 @@
 package com.huineey.blackpigproject.controller;
 
+import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,10 @@ class StoreApiController {
     private StoreRepository storeRepository;
 
     @GetMapping("/stores/{id}")
-    Store one(@RequestParam(required = false, defaultValue = "") Long id) {
+    Store one(@PathVariable Long id) {
         return storeRepository.findById(id).orElse(null);
     }
+
 
 
    /* @GetMapping("/boards")

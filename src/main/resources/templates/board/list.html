@@ -30,9 +30,10 @@
       </thead>
       <tbody>
       <tr th:each="board : ${boards}">
-        <td th:text="${board.id}">1</th>
-        <td th:text="${board.title}"th:href="@{/board/form(id=${board.id})}">Otto</a></td>
-        <td>김다흰</td>
+        <td th:text="${board.id}">Mark</td>
+        <!--  <td th:text="${board.id}">Mark</td> -->
+        <td><a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">Otto</a></td>
+        <td>홍길동</td>
       </tr>
       </tbody>
     </table>
@@ -52,7 +53,9 @@
         </li>
       </ul>
     </nav>
-    <button type="button" class="btn btn-dark"th:href="@{/board/form}">쓰기</button>
+    <div class="d-flex justify-content-end">
+      <a type="button" class="btn btn-dark" th:href="@{/board/form}">쓰기</a>
+    </div>
   </div>
 </main>
 <footer th:replace="fragments/common :: footer">
