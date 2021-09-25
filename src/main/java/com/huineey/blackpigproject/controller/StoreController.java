@@ -24,6 +24,7 @@ public class StoreController {
 
     @Autowired
     private StoreService storeService;
+    private Store id;
 
 
     @GetMapping("board/information")
@@ -34,6 +35,18 @@ public class StoreController {
             System.out.println(stores.get(i).getId());
         }
         return "board/information";
+    }
+
+    @GetMapping("board/detail")
+    public String one(Model model, @RequestParam(required = false, defaultValue = "") Long id) {
+        if(id == null){
+            System.out.println("아이디가 없습니다");
+            return "redirect:/board/information";
+        }else {
+            Store store = storeRepository.findById(id).orElse(null);
+            model.addAttribute("store", store);
+            return "board/detail";
+        }
     }
 
   /*  @GetMapping("board/information/{id}")

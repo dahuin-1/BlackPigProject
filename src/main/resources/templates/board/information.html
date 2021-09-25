@@ -121,26 +121,31 @@
                 <p class="lead" th:text="${stores.address}"></p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a th:href="@{/board/detail/${stores.id}}"><img th:src="${stores.image}" alt="" width="300"
-                                                                height="300"></a>
+                <a th:href="@{/board/detail(id=${stores.id})}">
+                 <img th:src="${stores.image}" alt="" width="300" height="300"></a>
+                    <!--<div th:action="@{/board/form}" th:object="${store}" method="GET">
+                    <input id="stores_id" type="hidden" th:value="*{id}"></div>-->
+                    <!--th:href="@{/board/detail/${stores.id}}">
+                    <input type="hidden" th:field="*{stores.id}">
+                   -->
+
             </div>
+
+            <!--<hr class="featurette-divider">-->
+            <!--  <div class="row featurette">
+                  <div class="col-md-7 order-md-2">
+                      <h2 class="featurette-heading">2021. <span class="text-muted"> 모퉁이우</span></h2>
+                      <p class="lead">서울 강남구 삼성동 영동대로96길 26</p>
+                  </div>
+                  <div class="col-md-5 order-md-1">
+                      <a th:href="@{/board/information/${stores.id}}"> <img
+                              src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
+                              alt="" width="300" height="300"> </a>
+                  </div>
+             </div>-->
         </div>
-        <!--<hr class="featurette-divider">-->
-        <!--  <div class="row featurette">
-              <div class="col-md-7 order-md-2">
-                  <h2 class="featurette-heading">2021. <span class="text-muted"> 모퉁이우</span></h2>
-                  <p class="lead">서울 강남구 삼성동 영동대로96길 26</p>
-              </div>
-              <div class="col-md-5 order-md-1">
-                  <a th:href="@{/board/information/${stores.id}}"> <img
-                          src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20210630021359_photo1_b58e24e2fdbc.jpg"
-                          alt="" width="300" height="300"> </a>
-              </div>
-         </div>-->
-
-        <hr class="featurette-divider">
-
-    </div>
+        <hr class="featurette-divider"/>
+        </div>
 </main>
 <footer th:replace="fragments/common :: footer">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
