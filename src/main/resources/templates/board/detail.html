@@ -15,17 +15,115 @@
 
 <main role="main" class="container">
     <div class="starter-template">
-        <br>
-        <h1>삐슐랭가이드</h1>
-        <p class="lead">hello, world</p>
         <div th:object="${store}">
-            <a style="text-decoration: none" th:text="|getInfo(*{id})|"></a>
-    <!--    <div th:object="${store}">
+            <br>
+            <h1 th:text="*{name}">삐슐랭가이드</h1>
+            <p class="lead"th:text="*{address}">hello, world</p>
+            <a style="text-decoration: none" th:text="*{id}"></a><br>
+            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33" width="300"></a>
+            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33" width="300"></a>
+            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33" width="300"></a>
+            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33" width="300"></a>
+            <!--    <div th:object="${store}">
             <p th:text="*{id}"> </p>-->
       <!--  <input type="hidden" th:field="*{store.image}">
         <div th:each="stores : ${stores}">-->
             <!--  <a><img alt="" class="img-thumbnail" height="300" th:src="*{sto }" width="300"></a>-->
      </div>
+        <p>Or, keep it light and add a border for some added definition to the boundaries of your content.
+            Be
+            sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing
+            of
+            both column's content for equal-height.</p>
+        <p>Or, keep it light and add a border for some added definition to the boundaries of your content.
+            Be
+            sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing
+            of
+            both column's content for equal-height.</p>
+        <p>Or, keep it light and add a border for some added definition to the boundaries of your content.
+            Be
+            sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing
+            of
+            both column's content for equal-height.</p>
+        <p>There’s something to tell you
+            You want me to share it with you
+            STAYC girls it’s going down
+            오늘 유난히 티가 더 나는 걸
+            모두 쳐다보는 게 다 보여
+            왠지 그럴수록 더 난 당당해져
+            기분 좋아지는 걸
+            머릴 넘기며 어디든 지나가네
+            내 달콤한 향수가 흩날리게 Yeah
+            항상 날 꾸미는 게 좋아
+            예쁜 게 좋아 근데 들어봐 Yeah
+            나도 알아 내 모습이
+            이뻐 보일지도 당돌한 걸지도
+            자꾸만 널 유혹하듯
+            보이겠지만 미안하지만
+            색안경을 끼고 보지 마요
+            난 좀 다른 여자인데
+            겉은 화려해도 아직 두려운 걸
+            You should know
+            I’m a good girl yeah
+            너무 세게 안으면 숨 막혀요
+            조금 서투를지도 난 아직도
+            색안경을 끼고 보지 마요
+            Oh baby baby baby
+            패션은 과감한 게 좋아 Like it uh huh
+            튀는 게 좋아 어떻게든 소화 Yeah
+            가끔 나조차 진짜 내 맘을 몰라
+            그런 나지만
+            나도 알아 내 모습이
+            이뻐 보일지도 당돌한 걸지도
+            자꾸만 널 유혹하듯
+            보이겠지만 미안하지만
+            색안경을 끼고 보지 마요
+            난 좀 다른 여자인데
+            겉은 화려해도 아직 두려운 걸
+            You should know
+            I’m a good girl yeah
+            너무 세게 안으면 숨 막혀요
+            조금 서투를지도 난 아직도
+            색안경을 끼고 보지 마요
+            Oh baby baby baby
+            Alright alright 드러나는 모습뿐인걸
+            Oh why oh why
+            눈으로만 날 판단하지 않길
+            Oh 꾸미지 않은 내 모습
+            Oh 있는 그대로의 모습
+            좋아해 줘 아직 여린 내 맘
+            꼭 알아줬으면 해
+            색안경을 끼고 보지 마요
+            난 좀 다른 여자인데
+            겉은 화려해도 아직 두려운 걸
+            You should know
+            I’m a good girl yeah
+            너무 세게 안으면 숨 막혀요
+            조금 서투를지도 난 아직도
+            색안경을 끼고 보지 마요
+            Oh baby baby baby</p>
+    <div class="container">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-white bg-dark rounded-3">
+                    <h2>삐약 별점</h2>
+                    <p>리뷰 테이블 만들어서 별점이랑 리뷰 관리, 식당 아이디로 조인 테이블
+                        Then, mix and match with additional component themes and more.</p>
+                    <button class="btn btn-outline-light" type="button">자세한 후기 보러가기</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>다흰 별점</h2>
+                    <p>Or, keep it light and add a border for some added definition to the boundaries of your content.
+                        Be
+                        sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing
+                        of</p>
+                    <button class="btn btn-outline-secondary" type="button">자세한 후기 보러가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
  </main>
  <footer th:replace="fragments/common :: footer">
