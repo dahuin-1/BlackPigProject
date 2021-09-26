@@ -105,10 +105,9 @@
     <div class="container">
         <div class="row align-items-md-stretch">
             <div class="col-md-6">
-                <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <div class="h-100 p-5 text-white bg-dark rounded-3" th:each="board : ${boards}">
                     <h2>삐약 별점</h2>
-                    <p>리뷰 테이블 만들어서 별점이랑 리뷰 관리, 식당 아이디로 조인 테이블
-                        Then, mix and match with additional component themes and more.</p>
+                    <p th:text="${boards.content}"></p>
                     <button class="btn btn-outline-light" type="button">자세한 후기 보러가기</button>
                 </div>
             </div>

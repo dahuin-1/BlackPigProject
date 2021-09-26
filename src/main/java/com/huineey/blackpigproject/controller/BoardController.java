@@ -36,7 +36,7 @@ public class BoardController {
     @GetMapping("list")
     public String list(Model model, @PageableDefault(size = 10) Pageable pageable,
                        @RequestParam(required = false, defaultValue = "") String searchText) {
-       // List<Board> boards = boardRepository.findAll();
+        // List<Board> boards = boardRepository.findAll();
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
@@ -48,11 +48,11 @@ public class BoardController {
 
     @GetMapping("/form")
     public String form(Model model, @RequestParam(required = false) Long id) {
-        if(id == null){
+        if (id == null) {
             model.addAttribute("board", new Board());
         } else {
             Board board = boardRepository.findById(id).orElse(null);
-           // List<Comment> comments = commentRepository.findCommentsByBoard(board);
+            // List<Comment> comments = commentRepository.findCommentsByBoard(board);
             model.addAttribute("board", board);
             //model.addAttribute("comments",comments);
         }
@@ -62,12 +62,12 @@ public class BoardController {
     @PostMapping("/form")
     public String postForm(@Valid Board board, BindingResult bindingResult) {
         boardValidator.validate(board, bindingResult);
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "board/form";
         }
         //Authentication a = SecurityContextHolder.getContext().getAuthentication(); 컨트롤러가 아닌 서비스 클래스에선 이렇게
         String username = "주인장";
-                //authentication.getName();
+        //authentication.getName();
         boardService.save(username, board);
         return "redirect:/board/list"; //리스트로 리다이렉트가 되면, 리스트에서 다시 한번 조회가 되면서 화면이 이동
     }

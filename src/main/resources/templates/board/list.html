@@ -14,7 +14,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('list')"></nav>
 
 <main role="main" class="container">
-  <div class="p-5 mb-4 bg-light rounded-3"> <!--옹졸한배경-->
   <div class="container">
     <h1>후기 게시판</h1>
     <div>총 건수 : <span th:text="${boards.totalElements}"></span></div>
@@ -53,7 +52,6 @@
     <div class="d-flex justify-content-end">
       <a type="button" class="btn btn-dark" th:href="@{/board/form}">쓰기</a>
     </div>
-  </div>
   </div>
 </main>
 <footer th:replace="fragments/common :: footer">
