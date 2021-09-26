@@ -9,18 +9,17 @@ import java.util.List;
 
 @Entity
 @Data
-public class Store {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String address;
-    private Long year;
-    private String image;
 
-    @OneToMany(mappedBy = "store")
-    //스토어 입장에서 리뷰를 가져올 때
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Board> boards = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
-
 }
