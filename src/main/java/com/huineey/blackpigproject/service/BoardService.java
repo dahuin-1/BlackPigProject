@@ -3,10 +3,13 @@ package com.huineey.blackpigproject.service;
 
 import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Store;
+import com.huineey.blackpigproject.model.User;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BoardService {
@@ -26,7 +29,7 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
-    public Board getStoreInfo(Long storeId) {
+    public List<Board> getStoreReview(Long storeId) {
         Store store = storeRepository.findById(storeId).orElse(null);
         storeId = store.getId();
         return boardRepository.findByStoreId(storeId);

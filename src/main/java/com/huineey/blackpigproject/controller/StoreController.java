@@ -50,10 +50,11 @@ public class StoreController {
             return "redirect:/board/information";
         }else {
             Store store = storeRepository.findById(id).orElse(null);
-            Board board = boardService.getStoreInfo(id);
+            List<Board> boards = boardService.getStoreReview(id);
             model.addAttribute("store", store);
-            model.addAttribute("board", board);
-            System.out.println(board.getTitle());
+            model.addAttribute("boards", boards);
+            //System.out.println(boards.get(0).getUser());
+           // System.out.println(boards.get(1).getUser());
           //  System.out.println(boards.get(0).getUser().toString());
             return "board/detail";
         }
