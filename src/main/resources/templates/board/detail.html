@@ -20,23 +20,34 @@
             <br>
             <h1 th:text="*{name}">삐슐랭가이드</h1>
             <p class="lead" th:text="*{address}">hello, world</p>
-            <a style="text-decoration: none" th:text="*{id}"></a><br>
-            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
-                    width="300"></a>
-            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
-                    width="300"></a>
-            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
-                    width="300"></a>
-            <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
-                    width="300"></a>
-            <!--    <div th:object="${store}">
-            <p th:text="*{id}"> </p>-->
-            <!--  <input type="hidden" th:field="*{store.image}">
-              <div th:each="stores : ${stores}">-->
-            <!--  <a><img alt="" class="img-thumbnail" height="300" th:src="*{sto }" width="300"></a>-->
+            <br>
         </div>
-        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '2'" th:text="${boards.getTitle()}"></p>
+        <!--<a style="text-decoration: none" th:text="*{id}"></a><br>-->
+        <div id="gallery">
+            <a th:each="image, iter : ${pictures}"th:class="${!iter.first} ? hidden">
+                <img class="img-thumbnail" th:src="${image}"></a>
+           <!-- <a> <img class="img-thumbnail" th:src="*{pictures.getImage1()}" alt="11" height="300" width="300"/></a>-->
+            <!--<div id="panel">
+                <img id="largeImage" height="500" width="500" th:src="*{image1}" th:if="*{pictures.} == '1'">
+                <div id="description">1st image description</div>
+            </div>
+            <div id="thumbs">
+                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image1}" alt="11" height="300" width="300"/></a>
+                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image2}" alt="22" height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image3}" alt="33" height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image4}" alt="44" height="300" width="300"></a>
+            </div>-->
+        </div>
+        <!--<a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
+                width="300"></a>-->
+        <!--    <div th:object="${store}">
+        <p th:text="*{id}"> </p>-->
+        <!--  <input type="hidden" th:field="*{store.image}">
+          <div th:each="stores : ${stores}">-->
+        <!--  <a><img alt="" class="img-thumbnail" height="300" th:src="*{sto }" width="300"></a>-->
 
+        <!--<p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '2'" th:text="${boards.getTitle()}"></p>-->
+        <br>
         <p>There’s something to tell you
             You want me to share it with you
             STAYC girls it’s going down
@@ -99,14 +110,16 @@
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
                         <h2>삐약 별점</h2>
-                        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '1'" th:text="${boards.getContent()}"></p>
+                        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '1'"
+                           th:text="${boards.getContent()}"></p>
                         <button class="btn btn-outline-light" type="button">자세한 후기 보러가기</button>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
                         <h2>다흰 별점</h2>
-                        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '2'" th:text="${boards.getContent()}"></p>
+                        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '2'"
+                           th:text="${boards.getContent()}"></p>
                         <button class="btn btn-outline-secondary" type="button">자세한 후기 보러가기</button>
                     </div>
                 </div>
@@ -115,23 +128,33 @@
     </div>
 </main>
 <footer th:replace="fragments/common :: footer">
-    <script>
-        function getInfo(id) {
-            $.ajax({
-                url: '/api/stores/' + id,
-                type: 'GET',
-                data: {
-                    info
-                },
-                success: function (result) {
-                    // Do something with the result
-                    // Do something with the result
-                    console.log('result', result);
-                    alert("완료");
-                    window.location.reload();
-                }
-            });
-        }
+    <script th:inline="javascript">
+        var header = /*[[${_csrf.headerName}]]*/;
+        var token = /*[[${_csrf.token}]]*/;
+        <!-- $('#thumbs').click(function(){
+             $('#largeImage').attr('src',$(this).attr('src').replace('2','1'));
+             $('#description').html($(this).attr('alt'));
+         });-->
+        /*$('#thumbs').click(function () {
+            // Grab img.thumb class src attribute
+            // NOTE: ALL img tags must have use this class,
+            // otherwise you can't click back to the first image.
+
+            var thumbSrc = $('#thumbs').attr$("#board_id").val();
+
+            // Grab img#largeImage src attribute
+            var largeSrc = $('#largeImage').attr('th:src');
+
+            // Use variables to replace src instead of relying on file names.
+            $('#largeImage').attr('src', $(this).attr('th:src').replace(thumbSrc, largeSrc));
+            $('#description').html($(this).attr('alt'));
+
+        });-*/
+        $('a.thumbnail').click(function () {
+            var src = $(this).find('img').attr('src').replace('60/60', '400/200');
+            $('#largeImage').attr('src', src);
+        });
+
     </script>
 </footer>
 </body>

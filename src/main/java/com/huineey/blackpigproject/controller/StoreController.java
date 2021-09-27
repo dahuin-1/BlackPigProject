@@ -1,10 +1,12 @@
 package com.huineey.blackpigproject.controller;
 
 import com.huineey.blackpigproject.model.Board;
+import com.huineey.blackpigproject.model.Picture;
 import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.StoreRepository;
 import com.huineey.blackpigproject.service.BoardService;
+import com.huineey.blackpigproject.service.PictureService;
 import com.huineey.blackpigproject.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,10 +26,10 @@ public class StoreController {
     private StoreRepository storeRepository;
 
     @Autowired
-    private BoardRepository boardRepository;
+    private BoardService boardService;
 
     @Autowired
-    private BoardService boardService; //보드 레파지토리를 이용해서 값을 넘긴다.
+    private PictureService pictureService;
 
     @GetMapping("board/information")
     public String info(Model model) {
@@ -51,11 +53,10 @@ public class StoreController {
         }else {
             Store store = storeRepository.findById(id).orElse(null);
             List<Board> boards = boardService.getStoreReview(id);
+            Picture pictures = pictureService.getPicture(id);
             model.addAttribute("store", store);
             model.addAttribute("boards", boards);
-            //System.out.println(boards.get(0).getUser());
-           // System.out.println(boards.get(1).getUser());
-          //  System.out.println(boards.get(0).getUser().toString());
+            model.addAttribute("pictures", pictures);
             return "board/detail";
         }
     }
