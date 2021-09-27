@@ -22,6 +22,9 @@ public class StoreController {
     @Autowired
     private StoreRepository storeRepository;
 
+    @Autowired
+    private BoardRepository boardRepository;
+
     @GetMapping("board/information")
     public String info(Model model) {
         List<Store> stores = storeRepository.findAll();
@@ -43,8 +46,9 @@ public class StoreController {
             return "redirect:/board/information";
         }else {
             Store store = storeRepository.findById(id).orElse(null);
-
+            List<Board> boards = boardRepository.findByStoreId(id);
             model.addAttribute("store", store);
+            model.addAttribute("boards", boards);
             return "board/detail";
         }
     }
