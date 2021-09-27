@@ -4,6 +4,7 @@ import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.StoreRepository;
+import com.huineey.blackpigproject.service.BoardService;
 import com.huineey.blackpigproject.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,9 @@ public class StoreController {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private BoardService boardService; //보드 레파지토리를 이용해서 값을 넘긴다.
 
     @GetMapping("board/information")
     public String info(Model model) {
@@ -46,9 +50,11 @@ public class StoreController {
             return "redirect:/board/information";
         }else {
             Store store = storeRepository.findById(id).orElse(null);
-            List<Board> boards = boardRepository.findByStoreId(id);
+            Board board = boardService.getStoreInfo(id);
             model.addAttribute("store", store);
-            model.addAttribute("boards", boards);
+            model.addAttribute("board", board);
+            System.out.println(board.getTitle());
+          //  System.out.println(boards.get(0).getUser().toString());
             return "board/detail";
         }
     }

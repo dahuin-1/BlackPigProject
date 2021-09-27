@@ -19,7 +19,4 @@ public class User {
     @JsonIgnore
     private List<Board> boards = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Review> reviews = new ArrayList<>();
 }

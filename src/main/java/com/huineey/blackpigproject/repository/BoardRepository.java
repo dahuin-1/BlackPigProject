@@ -11,6 +11,7 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<Board, Long> {
     List<Board> findAll();
     Page<Board> findByTitleContainingOrContentContaining(String searchText, String searchText1, Pageable pageable);
-    List<Board> findByStoreId(Long id);
+    //List<Board> findByStoreId(Long id);
+    Board findByStoreId(Long id);
     List<Board> findByTitleOrContent(String title, String content);
 }
