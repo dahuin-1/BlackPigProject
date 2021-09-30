@@ -11,11 +11,13 @@
     <title>삐슐랭가이드</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
      th:replace="fragments/common :: menu('detail')"></nav>
 
 <main role="main" class="container">
     <div class="starter-template">
+        <!--<img class="img-thumbnail" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33">-->
+        <img class="img-thumbnail" src="images/image_03_large.jpeg">
         <div th:object="${store}">
             <br>
             <h1 th:text="*{name}">삐슐랭가이드</h1>
@@ -24,19 +26,20 @@
         </div>
         <!--<a style="text-decoration: none" th:text="*{id}"></a><br>-->
         <div id="gallery">
-            <a th:each="image, iter : ${pictures}"th:class="${!iter.first} ? hidden">
-                <img class="img-thumbnail" th:src="${image}"></a>
+            <!--<a th:each="i, iter : ${pictures}">-->
+                <!--th:class="${!iter.first} ? hidden">-->
+                <!--<img class="img-thumbnail" src="$@{i}"></a>-->
            <!-- <a> <img class="img-thumbnail" th:src="*{pictures.getImage1()}" alt="11" height="300" width="300"/></a>-->
-            <!--<div id="panel">
-                <img id="largeImage" height="500" width="500" th:src="*{image1}" th:if="*{pictures.} == '1'">
+            <div id="panel">
+                <img id="largeImage" height="500" width="500" src="/Users/dhkim/SpringBootProject/blackpig/src/main/resources/images/image_01_large.jpeg">
                 <div id="description">1st image description</div>
             </div>
             <div id="thumbs">
-                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image1}" alt="11" height="300" width="300"/></a>
-                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image2}" alt="22" height="300" width="300"></a>
-                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image3}" alt="33" height="300" width="300"></a>
-                <a class="thumbnail"><img class="img-thumbnail" th:src="*{image4}" alt="44" height="300" width="300"></a>
-            </div>-->
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_01_thumb.jpeg" alt="11" height="300" width="300"/></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_02_thumb.jpeg" alt="22" height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_03_thumb.jpeg" alt="33" height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_04_thumb.jpeg" alt="44" height="300" width="300"></a>
+            </div>
         </div>
         <!--<a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
                 width="300"></a>-->
@@ -131,6 +134,12 @@
     <script th:inline="javascript">
         var header = /*[[${_csrf.headerName}]]*/;
         var token = /*[[${_csrf.token}]]*/;
+
+        $('#thumbs').delegate('img','click', function(){
+            $('#largeImage').attr('src',$(this).attr('src').replace('thumb','large'));
+            $('#description').html($(this).attr('alt'));
+        });
+
         <!-- $('#thumbs').click(function(){
              $('#largeImage').attr('src',$(this).attr('src').replace('2','1'));
              $('#description').html($(this).attr('alt'));
@@ -150,11 +159,10 @@
             $('#description').html($(this).attr('alt'));
 
         });-*/
-        $('a.thumbnail').click(function () {
+       /* $('a.thumbnail').click(function () {
             var src = $(this).find('img').attr('src').replace('60/60', '400/200');
             $('#largeImage').attr('src', src);
-        });
-
+        });*/
     </script>
 </footer>
 </body>

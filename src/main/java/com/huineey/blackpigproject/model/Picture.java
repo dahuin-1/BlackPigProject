@@ -17,7 +17,7 @@ public class Picture {
     @JsonIgnore
     private Store store;
 
-  /*  private String image1;
+    private String image1;
     private String image2;
     private String image3;
     private String image4;
@@ -26,8 +26,7 @@ public class Picture {
     private String image5;
     private String image6;
     private String image7;
-    private String image8;*/
-
+    private String image8;
 
 
 }

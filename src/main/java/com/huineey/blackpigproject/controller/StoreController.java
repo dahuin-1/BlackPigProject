@@ -53,10 +53,11 @@ public class StoreController {
         }else {
             Store store = storeRepository.findById(id).orElse(null);
             List<Board> boards = boardService.getStoreReview(id);
-            Picture pictures = pictureService.getPicture(id);
+            List<Picture> pictures = pictureService.getPicture(id);
             model.addAttribute("store", store);
             model.addAttribute("boards", boards);
             model.addAttribute("pictures", pictures);
+            System.out.println(pictures.get(0).getImage1());
             return "board/detail";
         }
     }

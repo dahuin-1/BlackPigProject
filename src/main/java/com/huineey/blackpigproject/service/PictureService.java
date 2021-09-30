@@ -17,7 +17,7 @@ public class PictureService {
     @Autowired
     StoreRepository storeRepository;
 
-    public Picture getPicture(Long storeId) {
+    public List<Picture> getPicture(Long storeId) {
         Store store = storeRepository.findById(storeId).orElse(null);
         storeId = store.getId();
         return pictureRepository.findPictureByStoreId(storeId);

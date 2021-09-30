@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PictureRepository extends JpaRepository<Picture, Long> {
 
-    Picture findPictureByStoreId(Long id);
+    List<Picture> findPictureByStoreId(Long id);
 
 }
