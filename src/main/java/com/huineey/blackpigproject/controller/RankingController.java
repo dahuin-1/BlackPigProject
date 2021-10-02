@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board")
 public class RankingController {
 
-    @GetMapping("gallery")
+    @GetMapping("ranking")
     public String show() {
-        return "board/gallery";
+        return "board/ranking";
     }
 }
