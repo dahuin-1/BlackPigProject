@@ -54,6 +54,10 @@
                     <a class="nav-link" th:classappend="${menu} == 'list'? 'active'" aria-current="page" th:href="@{/board/list}">후기<span class="sr-only"
                                                                                                     th:if="${menu} == 'list'"></span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${menu} == 'gallery'? 'active'" aria-current="page" th:href="@{/board/gallery}">사진<span class="sr-only"
+                                                                                                                                          th:if="${menu} == 'gallery'"></span></a>
+                </li>
             </ul>
             <form class="d-flex" method="GET" th:action="@{/board/list}">
                 <input class="form-control me-2" id="searchText" name="searchText" type="search" placeholder="Search"
