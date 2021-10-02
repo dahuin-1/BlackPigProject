@@ -56,41 +56,106 @@
             </div>
         </div>
         <br>
-        <div class="text-right">
+          <!--  <button type="button" class="btn btn_dark" onclick="showCommentForm();">댓글 달기</button>-->
+            <button type="button" class="btn btn-dark" th:onclick="showCommentForm()">댓글달기</button>
             <a type="button" class="btn btn-dark" th:href="@{/board/list}">취소</a>
-            <button type="button" class="btn btn-dark" th:onclick="|deleteBoard(*{id})|">삭제
-            </button>
-
+            <button type="button" class="btn btn-dark" th:onclick="|deleteBoard(*{id})|">삭제</button>
             <button type="submit" class="btn btn-dark">확인</button>
+    </form><br>
+
+    <div id="comment_form" style="display: none" th:object="${board}" method="post">
+        <input id="board_id" type="hidden" th:value="*{id}">
+        <!--<label for="content"> 댓글 내용 </label>-->
+        <textarea class="form-control" name="comment" id="comment" row="3"  placeholder="댓글을 남겨주세요"></textarea><br>
+        <button id="write_comment_btn" type="button" class="btn btn-dark" th:onclick="postComment()">작성</button>
+        <button id="delete_comment_btn" type="button" class="btn btn-dark">삭제</button>
+    </div><br>
+
+    <div th:each="comments : ${comments}">
+        <label for="content">[댓글]</label>
+        <div class="card">
+            <div class="card-body">
+                <strong th:text="${comments.writer}"></strong>
+                <br/>
+                <a style="text-decoration: none" th:text="${comments.content}"></a>
+            </div>
         </div>
-    </form>
-    <br/>
+    </div>
+    <br>
+    <br>
 </div>
 <footer th:replace="fragments/common :: footer"></footer>
 <script th:inline="javascript">
-  // var header = /*[[${_csrf.headerName}]]*/;
-  //  var token = /*[[${_csrf.token}]]*/;
-   /* $("#select_store_btn").click(function () {
-        $(document).ajaxSend(function(e, xhr, options) {
-            xhr.setRequestHeader(header,token);
-        });
-        //const boardId = $("#board_id").val();
-        const comment = $("#id").val();
-        $.ajax({
-         //   url: '/api/comments/' + boardId,
-        //    type: 'POST',
-            data: {
-                comment
-            },beforeSend: function (xhr) {
+    function postComment() {
+        $("#write_comment_btn").click(function () {
+            //alert("test")
+            $(document).ajaxSend(function (e, xhr, options) {
                 xhr.setRequestHeader(header, token);
-            },
-            success: function (result) {
-                console.log('result', result);
-                alert(comment);
-                window.location.reload();
-            }
+            });
+            const boardId = $("#board_id").val();
+            const comment = $("#comment").val();
+            $.ajax({
+                url: '/api/comments/' + boardId,
+                type: 'POST',
+                data: {
+                    comment
+                }, beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (result) {
+                    console.log('result', result);
+                    window.location.reload();
+                }
+            })
         })
-    })*/
+    }
+
+    function showCommentForm() {
+        $("#comment_form").css("display","");
+        $("#delete_comment_btn").click(function () {
+            $(document).ajaxSend(function(e, xhr, options) {
+                xhr.setRequestHeader(header,token);
+            });
+            const commentId = $("#comment_id").val();
+            const comment = $("#comment").val();
+            $.ajax({
+                url: '/api/comments/' + commentId,
+                type: 'DELETE',
+                data: {
+                    comment
+                },beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (result) {
+                    console.log('result', result);
+                    window.location.reload();
+                }
+            })
+        })
+
+    }
+      /*  $("#comment_form").css("display","");
+        $("#delete_comment_btn").click(function () {
+            $(document).ajaxSend(function(e, xhr, options) {
+                xhr.setRequestHeader(header,token);
+            });
+            const commentId = $("#comment_id").val();
+            const comment = $("#comment").val();
+            $.ajax({
+                url: '/api/comments/' + commentId,
+                type: 'DELETE',
+                data: {
+                    comment
+                },beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (result) {
+                    console.log('result', result);
+                    window.location.reload();
+                }
+            })
+        })*/
+
     function deleteBoard(id) {
         $.ajax({
             url: '/api/boards/' + id,

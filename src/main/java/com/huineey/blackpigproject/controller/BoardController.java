@@ -1,8 +1,10 @@
 package com.huineey.blackpigproject.controller;
 
 import com.huineey.blackpigproject.model.Board;
+import com.huineey.blackpigproject.model.Comment;
 import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
+import com.huineey.blackpigproject.repository.CommentRepository;
 import com.huineey.blackpigproject.service.BoardService;
 import com.huineey.blackpigproject.service.StoreService;
 import com.huineey.blackpigproject.validator.BoardValidator;
@@ -30,12 +32,12 @@ public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
 
+
+    @Autowired
+    private CommentRepository commentRepository;
+
     @Autowired
     private BoardService boardService;
-
-
-    @Autowired
-    private StoreService storeService;
 
     @Autowired
     private BoardValidator boardValidator;
@@ -62,9 +64,10 @@ public class BoardController {
             model.addAttribute("board", new Board());
         } else {
             Board board = boardRepository.findById(id).orElse(null);
+            List<Comment> comments = commentRepository.findCommentsByBoard(board);
             // List<Comment> comments = commentRepository.findCommentsByBoard(board);
             model.addAttribute("board", board);
-            //model.addAttribute("comments",comments);
+            model.addAttribute("comments",comments);
         }
         return "board/form";
     }
