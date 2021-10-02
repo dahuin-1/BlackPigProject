@@ -49,10 +49,10 @@ class BoardApiController {
                 });
     }
 
- /*   @Secured("ROLE_ADMIN") //보안 취약 부분 고침
+  // @Secured("ROLE_ADMIN") //보안 취약 부분 고침
     @DeleteMapping("/boards/{id}")
     void deleteBoard(@PathVariable Long id) {
-        repository.deleteById(id);
-    }*/
+        boardRepository.deleteById(id);
+    }
 }
 

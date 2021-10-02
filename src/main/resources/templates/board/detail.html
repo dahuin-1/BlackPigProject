@@ -27,18 +27,23 @@
         <!--<a style="text-decoration: none" th:text="*{id}"></a><br>-->
         <div id="gallery">
             <!--<a th:each="i, iter : ${pictures}">-->
-                <!--th:class="${!iter.first} ? hidden">-->
-                <!--<img class="img-thumbnail" src="$@{i}"></a>-->
-           <!-- <a> <img class="img-thumbnail" th:src="*{pictures.getImage1()}" alt="11" height="300" width="300"/></a>-->
+            <!--th:class="${!iter.first} ? hidden">-->
+            <!--<img class="img-thumbnail" src="$@{i}"></a>-->
+            <!-- <a> <img class="img-thumbnail" th:src="*{pictures.getImage1()}" alt="11" height="300" width="300"/></a>-->
             <div id="panel">
-                <img id="largeImage" height="500" width="500" src="/Users/dhkim/SpringBootProject/blackpig/src/main/resources/images/image_01_large.jpeg">
+                <img id="largeImage" height="500" width="500"
+                     src="/Users/dhkim/SpringBootProject/blackpig/src/main/resources/images/image_01_large.jpeg">
                 <div id="description">1st image description</div>
             </div>
             <div id="thumbs">
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_01_thumb.jpeg" alt="11" height="300" width="300"/></a>
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_02_thumb.jpeg" alt="22" height="300" width="300"></a>
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_03_thumb.jpeg" alt="33" height="300" width="300"></a>
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_04_thumb.jpeg" alt="44" height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_01_thumb.jpeg" alt="11"
+                                          height="300" width="300"/></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_02_thumb.jpeg" alt="22"
+                                          height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_03_thumb.jpeg" alt="33"
+                                          height="300" width="300"></a>
+                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_04_thumb.jpeg" alt="44"
+                                          height="300" width="300"></a>
             </div>
         </div>
         <!--<a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
@@ -128,6 +133,11 @@
                 </div>
             </div>
         </div>
+
+        <br>
+        <div class="text-right">
+            <a th:href="@{/board/list}">다른 후기가 궁금하다면?</a>
+        </div>
     </div>
 </main>
 <footer th:replace="fragments/common :: footer">
@@ -135,8 +145,8 @@
         var header = /*[[${_csrf.headerName}]]*/;
         var token = /*[[${_csrf.token}]]*/;
 
-        $('#thumbs').delegate('img','click', function(){
-            $('#largeImage').attr('src',$(this).attr('src').replace('thumb','large'));
+        $('#thumbs').delegate('img', 'click', function () {
+            $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
             $('#description').html($(this).attr('alt'));
         });
 
@@ -159,10 +169,10 @@
             $('#description').html($(this).attr('alt'));
 
         });-*/
-       /* $('a.thumbnail').click(function () {
-            var src = $(this).find('img').attr('src').replace('60/60', '400/200');
-            $('#largeImage').attr('src', src);
-        });*/
+        /* $('a.thumbnail').click(function () {
+             var src = $(this).find('img').attr('src').replace('60/60', '400/200');
+             $('#largeImage').attr('src', src);
+         });*/
     </script>
 </footer>
 </body>
