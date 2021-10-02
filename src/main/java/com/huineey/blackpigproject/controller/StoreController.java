@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//가게 정보
 
 @Controller
 public class StoreController {
