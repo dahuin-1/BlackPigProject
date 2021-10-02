@@ -4,6 +4,7 @@ import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.service.BoardService;
+import com.huineey.blackpigproject.service.StoreService;
 import com.huineey.blackpigproject.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
 
 //게시판
 
@@ -31,19 +33,26 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+
+    @Autowired
+    private StoreService storeService;
+
     @Autowired
     private BoardValidator boardValidator;
 
     @GetMapping("list")
     public String list(Model model, @PageableDefault(size = 10) Pageable pageable,
-                       @RequestParam(required = false, defaultValue = "") String searchText) {
+                       @RequestParam(required = false, defaultValue = "") String searchText, Long id) {
         // List<Board> boards = boardRepository.findAll();
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
+       // List<Store> store = storeService.getStoreName(boards.getNumber());
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("boards", boards);
+      //  model.addAttribute("store",store);
+      //  System.out.println(store.get(0).getName());
         return "board/list";
     }
 

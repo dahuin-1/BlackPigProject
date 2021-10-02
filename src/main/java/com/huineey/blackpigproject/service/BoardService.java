@@ -7,6 +7,7 @@ import com.huineey.blackpigproject.model.User;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +35,6 @@ public class BoardService {
         storeId = store.getId();
         return boardRepository.findByStoreId(storeId);
     }
+
 
 }
