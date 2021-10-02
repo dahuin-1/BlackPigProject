@@ -58,7 +58,6 @@ public class StoreController {
             model.addAttribute("store", store);
             model.addAttribute("boards", boards);
             model.addAttribute("pictures", pictures);
-            System.out.println(pictures.get(0).getImage1());
             return "board/detail";
         }
     }

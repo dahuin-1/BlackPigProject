@@ -46,27 +46,16 @@
             <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
                 <li class="nav-item col-6 col-md-auto">
                     <a class="nav-link" th:classappend="${menu} == 'map'? 'active'" aria-current="page" href="#"
-                       th:href="@{/}">지도<span
-                            class="sr-only" th:if="${menu} == 'map'"></span></a>
-                </li>
-
-
+                       th:href="@{/}">지도</a></li>
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link" th:classappend="${menu} == 'info'? 'active'" aria-current="page"
-                       href="#" th:href="@{/board/information}">정보<span
-                            class="sr-only" th:if="${menu} == 'info'"></span></a>
-                </li>
-
+                        <a class="nav-link" th:classappend="${menu} == 'info'? 'active'" aria-current="page"
+                           href="#" th:href="@{/board/information}">정보</a></li>
                 <li class="nav-item col-6 col-md-auto">
                     <a class="nav-link" th:classappend="${menu} == 'list'? 'active'" aria-current="page"
-                       th:href="@{/board/list}">후기<span class="sr-only"
-                                                        th:if="${menu} == 'list'"></span></a>
-                </li>
-
+                       th:href="@{/board/list}">후기</a></li>
                 <li class="nav-item col-6 col-md-auto">
                     <a class="nav-link" th:classappend="${menu} == 'ranking'? 'active'" aria-current="page"
-                       th:href="@{/board/ranking}">인기글</a>
-                </li>
+                       th:href="@{/board/ranking}">인기글</a></li>
             </ul>
             <ul class="navbar-nav ms-md-auto">
                 <!--<li class="nav-item col-6 col-md-auto">
