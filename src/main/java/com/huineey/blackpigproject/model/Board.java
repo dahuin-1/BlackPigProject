@@ -32,8 +32,6 @@ public class Board {
     @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "id") //어떤 칼럼과 스토어 테이블이 연결이 될지
     @JsonIgnore
-    @NotNull
-    @Size(min=1, max=1, message = "숫자로만 입력해주세요")
     private Store store;
 
 
