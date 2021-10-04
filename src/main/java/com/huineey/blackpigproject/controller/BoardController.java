@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,19 +57,28 @@ public class BoardController {
         return "board/list";
     }
 
-    @Transactional(readOnly = true)
     @GetMapping("/form")
     public String form(Model model, @RequestParam(required = false) Long id) {
         if (id == null) {
             model.addAttribute("board", new Board());
         } else {
             Board board = boardRepository.findById(id).orElse(null);
+            model.addAttribute("board", board);
+        }
+        return "board/form";
+    }
+
+    @GetMapping("/view")
+    public String view(Model model, @RequestParam(required = false) Long id) {
+        if (id == null) {
+            model.addAttribute("board", new Board());
+        } else {
+            Board board = boardRepository.findById(id).orElse(null);
             List<Comment> comments = commentRepository.findCommentsByBoard(board);
-            // List<Comment> comments = commentRepository.findCommentsByBoard(board);
             model.addAttribute("board", board);
             model.addAttribute("comments",comments);
         }
-        return "board/form";
+        return "board/view";
     }
 
     @PostMapping("/form")
@@ -85,7 +93,7 @@ public class BoardController {
         String username = "주인장";
         board.setStore(board.getStore());
         //authentication.getName();
-        System.out.println("----------------------"+board);
+      //  System.out.println("----------------------"+board);
         boardService.save(username, board);
         return "redirect:/board/list"; //리스트로 리다이렉트가 되면, 리스트에서 다시 한번 조회가 되면서 화면이 이동
     }

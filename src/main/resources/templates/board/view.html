@@ -28,16 +28,16 @@
         <div id="result"></div>
         <div class="form-group">
             <label>[리뷰를 작성하고 싶은 식당을 선택해주세요]</label><br>
-            <input type="radio" name="store" value="1" id="1" th:field="*{store}">정식당 &nbsp;
-            <input type="radio" name="store" value="2" id="2" th:field="*{store}">모퉁이우 &nbsp;
-            <input type="radio" name="store" value="3" id="3" th:field="*{store}">주옥 &nbsp;
-            <input type="radio" name="store" value="4" id="4" th:field="*{store}">임프레션 &nbsp;
-            <input type="radio" name="store" value="5" id="5" th:field="*{store}">청담우월
+            <input readonly type="radio" name="store" value="1" id="1" th:field="*{store}">정식당 &nbsp;
+            <input readonly type="radio" name="store" value="2" id="2" th:field="*{store}">모퉁이우 &nbsp;
+            <input readonly type="radio" name="store" value="3" id="3" th:field="*{store}">주옥 &nbsp;
+            <input readonly type="radio" name="store" value="4" id="4" th:field="*{store}">임프레션 &nbsp;
+            <input readonly type="radio" name="store" value="5" id="5" th:field="*{store}">청담우월
         </div>
         <br>
         <div class="form-group">
             <label for="title">[제목]</label>
-            <input type="text" class="form-control"
+            <input readonly type="text" class="form-control"
                    th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
                 제목 에러 메시지
@@ -46,7 +46,7 @@
         <br>
         <div class="form-group">
             <label for="content">[내용]</label>
-            <textarea class="form-control" id="content" rows="25" th:field="*{content}"
+            <textarea readonly class="form-control" id="content" rows="25" th:field="*{content}"
                       th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'"> </textarea>
             <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
                 내용 에러 메시지
@@ -54,10 +54,11 @@
         </div>
         <br>
         <!--  <button type="button" class="btn btn_dark" onclick="showCommentForm();">댓글 달기</button>-->
-        <!--<button type="button" class="btn btn-dark" onclick="showCommentForm();">댓글 달기</button>-->
-        <a type="button" class="btn btn-dark" th:href="@{/board/view(id=${board.id})}">취소</a>
+        <button type="button" class="btn btn-dark" onclick="showCommentForm();">댓글 달기</button>
+        <a type="button" class="btn btn-dark" th:href="@{/board/list}">취소</a>
         <button type="button" class="btn btn-dark" th:onclick="|deleteBoard(*{id})|">삭제</button>
-        <button type="submit" class="btn btn-dark">확인</button>
+        <a type="button" class="btn btn-dark" th:href="@{/board/form(id=${board.id})}">수정</a>
+        <!--<button type="submit" class="btn btn-dark">확인</button>-->
     </form>
     <br>
 
@@ -69,6 +70,18 @@
         <button id="write_comment_btn" type="button" class="btn btn-dark" th:onclick="|save(*{id})|">작성</button>
         <button id="delete_comment_btn" type="button" class="btn btn-dark">삭제</button>
     </div>
+    <br>
+
+    <th:block th:each="comments : ${comments}">
+        <div class="card">
+            <div class="card-body">
+                <strong th:text="${comments.writer}"></strong><br/>
+                <a style="text-decoration: none" th:text="${comments.content}"></a>
+            </div>
+        </div>
+    </th:block>
+    <br>
+    <br>
 </div>
 <footer th:replace="fragments/common :: footer"></footer>
 <script th:inline="javascript">
@@ -117,23 +130,6 @@
             })
         })
     }
-
-    function displayRadioValue() {
-        document.getElementById("result").innerHTML = "";
-        var ele = document.getElementsByTagName('input');
-
-        for (i = 0; i < ele.length; i++) {
-
-            if (ele[i].type === "radio") {
-
-                if (ele[i].checked)
-                    document.getElementById("result").innerHTML
-                        += ele[i].name + " Value: "
-                        + ele[i].value + "<br>";
-            }
-        }
-    }
-
 
     function deleteBoard(id) {
         $.ajax({
