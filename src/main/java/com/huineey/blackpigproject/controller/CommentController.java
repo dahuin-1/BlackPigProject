@@ -37,7 +37,7 @@ public class CommentController {
         Comment newComment = new Comment();
         newComment.setBoard(board);
         newComment.setContent(comment);
-        newComment.setWriter(username);
+        newComment.setWriter("newComment.getWriter()");
         return commentRepository.save(newComment);
     }
 }

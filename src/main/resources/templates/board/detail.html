@@ -117,24 +117,24 @@
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
                         <h2>삐약 별점</h2>
-                        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '1'"
-                           th:text="${boards.getContent()}"></p>
+                        <p th:each="boards : ${boards}" th:if="*{boards.user.id} == '1'"
+                           th:text="${boards.content}"></p>
                         <button class="btn btn-outline-light" type="button">자세한 후기 보러가기</button>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
                         <h2>다흰 별점</h2>
-                        <p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '2'"
-                           th:text="${boards.getContent()}"></p>
-                        <button class="btn btn-outline-secondary" type="button">자세한 후기 보러가기</button>
+                        <p th:each="boards : ${boards}" th:if="*{boards.user.id} == '2'"
+                           th:text="${boards.title}"></p>
+                        <button class=" btn btn-outline-secondary" type="button">자세한 후기 보러가기</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <br>
-        <div class="text-right">
+        <div class="d-flex justify-content-end">
             <a th:href="@{/board/list}">다른 후기가 궁금하다면?</a>
         </div>
     </div>

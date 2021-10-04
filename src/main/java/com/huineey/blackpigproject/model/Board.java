@@ -20,6 +20,8 @@ public class Board {
     private String title;
     private String content;
 
+    private String rating;
+
   /*  @NotNull
     @Size(min=1, max=1, message = "스토어 아이디는 숫자로만 입력해주세요")
     private Long store_id;*/
