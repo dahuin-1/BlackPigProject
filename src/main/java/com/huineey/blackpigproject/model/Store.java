@@ -18,11 +18,9 @@ public class Store {
     private Long year;
     private String thumbnail;
 
-   // @OneToMany(mappedBy = "store")
-    @OneToMany
+  /*  @OneToMany
     @JsonIgnore
-    private List<Picture> pictures;
-
+    private List<Picture> pictures;*/
 
 
    /* @OneToMany(mappedBy = "store")

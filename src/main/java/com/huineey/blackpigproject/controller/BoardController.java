@@ -6,7 +6,6 @@ import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.CommentRepository;
 import com.huineey.blackpigproject.service.BoardService;
-import com.huineey.blackpigproject.service.StoreService;
 import com.huineey.blackpigproject.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,12 +74,16 @@ public class BoardController {
     @PostMapping("/form")
     public String postForm(@Valid Board board, BindingResult bindingResult) {
         boardValidator.validate(board, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "board/form";
         }
+
         //Authentication a = SecurityContextHolder.getContext().getAuthentication(); 컨트롤러가 아닌 서비스 클래스에선 이렇게
         String username = "주인장";
+        board.setStore(board.getStore());
         //authentication.getName();
+        System.out.println("----------------------"+board);
         boardService.save(username, board);
         return "redirect:/board/list"; //리스트로 리다이렉트가 되면, 리스트에서 다시 한번 조회가 되면서 화면이 이동
     }
