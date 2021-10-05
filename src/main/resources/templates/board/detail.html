@@ -88,45 +88,26 @@
             자꾸만 널 유혹하듯
             보이겠지만 미안하지만
             색안경을 끼고 보지 마요
-            난 좀 다른 여자인데
-            겉은 화려해도 아직 두려운 걸
-            You should know
-            I’m a good girl yeah
-            너무 세게 안으면 숨 막혀요
-            조금 서투를지도 난 아직도
-            색안경을 끼고 보지 마요
-            Oh baby baby baby
-            Alright alright 드러나는 모습뿐인걸
-            Oh why oh why
-            눈으로만 날 판단하지 않길
-            Oh 꾸미지 않은 내 모습
-            Oh 있는 그대로의 모습
-            좋아해 줘 아직 여린 내 맘
-            꼭 알아줬으면 해
-            색안경을 끼고 보지 마요
-            난 좀 다른 여자인데
-            겉은 화려해도 아직 두려운 걸
-            You should know
-            I’m a good girl yeah
-            너무 세게 안으면 숨 막혀요
-            조금 서투를지도 난 아직도
-            색안경을 끼고 보지 마요
-            Oh baby baby baby</p>
+        </p>
         <div class="container">
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
                         <h2>삐약 별점</h2>
-                        <p th:each="boards : ${boards}" th:if="*{boards.user.id} == '1'"
-                           th:text="${boards.content}"></p>
-                        <button class="btn btn-outline-light" type="button">자세한 후기 보러가기</button>
+                        <div th:each="boards : ${boards}" th:if="${boards.user.id} == '2'">
+                            <p th:text="${boards.rating}"></p>
+                            <p th:text="${boards.title}"></p>
+                            <button class="btn btn-outline-light" type="button">자세한 후기 보러가기</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
                         <h2>다흰 별점</h2>
-                        <p th:each="boards : ${boards}" th:if="*{boards.user.id} == '2'"
-                           th:text="${boards.title}"></p>
+                        <div th:each="boards : ${boards}" th:if="${boards.user.id} == '1'">
+                            <p th:text="${boards.rating}"></p>
+                            <p th:text="${boards.title}"></p>
+                        </div>
                         <button class=" btn btn-outline-secondary" type="button">자세한 후기 보러가기</button>
                     </div>
                 </div>

@@ -46,14 +46,14 @@ public class BoardController {
                        @RequestParam(required = false, defaultValue = "") String searchText, Long id) {
         // List<Board> boards = boardRepository.findAll();
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
-       // List<Store> store = storeService.getStoreName(boards.getNumber());
+        // List<Store> store = storeService.getStoreName(boards.getNumber());
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("boards", boards);
-      //  model.addAttribute("store",store);
-      //  System.out.println(store.get(0).getName());
+        //  model.addAttribute("store",store);
+        //  System.out.println(store.get(0).getName());
         return "board/list";
     }
 
@@ -93,7 +93,7 @@ public class BoardController {
         String username = "주인장";
         board.setStore(board.getStore());
         //authentication.getName();
-      //  System.out.println("----------------------"+board);
+        //  System.out.println("----------------------"+board);
         boardService.save(username, board);
         return "redirect:/board/list"; //리스트로 리다이렉트가 되면, 리스트에서 다시 한번 조회가 되면서 화면이 이동
     }

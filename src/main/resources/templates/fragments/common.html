@@ -26,23 +26,9 @@
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <!--  <div class="collapse navbar-collapse" id="navbarExampleDefault">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item active" th:classappend="${menu} == 'home'? 'active'">
-                  <a class="nav-link" href="#" th:href="@{/}">지도로 이동<span class="sr-only" th:if="${menu} == 'home'"></span></a>
-              </li>
-              <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                  <a class="nav-link" href="#" th:href="@{/board/information}">정보<span class="sr-only" th:if="${menu} == 'info'"></span></a>
-              </li>
-              <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                  <a class="nav-link" href="#" th:href="@{/board/list}">후기<span class="sr-only" th:if="${menu} == 'board'"></span></a>
-              </li>
-          </ul>
-      </div>-->
-    <!--<div class="container-fluid">-->
+
     <div class="collapse navbar-collapse" id="bdNavbar">
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <!--<ul class="navbar-nav me-auto mb-2 mb-md-0">-->
             <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
                 <li class="nav-item col-6 col-md-auto">
                     <a class="nav-link" th:classappend="${menu} == 'map'? 'active'" aria-current="page" href="#"

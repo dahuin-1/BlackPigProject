@@ -45,7 +45,7 @@ class BoardApiController {
         newComment.setContent(comment);
         newComment.setWriter(username);
         return commentRepository.save(newComment);*/
-  //  }
+    //  }
 
     @GetMapping("/boards/{id}")
     Board one(@PathVariable Long id) {
@@ -66,10 +66,11 @@ class BoardApiController {
                 });
     }
 
-  // @Secured("ROLE_ADMIN") //보안 취약 부분 고침
+    // @Secured("ROLE_ADMIN") //보안 취약 부분 고침
     @DeleteMapping("/boards/{id}")
     void deleteBoard(@PathVariable Long id) {
         boardRepository.deleteById(id);
     }
 }
+
 
