@@ -16,44 +16,30 @@
 
 <main role="main" class="container">
     <div class="starter-template">
-        <!--<img class="img-thumbnail" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33">-->
         <div th:object="${store}">
             <br>
             <h1 th:text="*{name}">삐슐랭가이드</h1>
             <p class="lead" th:text="*{address}">hello, world</p>
             <br>
         </div>
-        <!--<a style="text-decoration: none" th:text="*{id}"></a><br>-->
         <div id="gallery">
-            <!--<a th:each="i, iter : ${pictures}">-->
-            <!--th:class="${!iter.first} ? hidden">-->
-            <!--<img class="img-thumbnail" src="$@{i}"></a>-->
-            <!-- <a> <img class="img-thumbnail" th:src="*{pictures.getImage1()}" alt="11" height="300" width="300"/></a>-->
             <div id="panel">
-                <img id="largeImage" height="500" width="500"
-                     src="/Users/dhkim/SpringBootProject/blackpig/src/main/resources/images/image_01_large.jpeg">
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_large.jpeg" id="largeImage"
+                     height="400" width="400" onclick="test();">
                 <div id="description">1st image description</div>
             </div>
-            <div id="thumbs">
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_01_thumb.jpeg" alt="11"
-                                          height="300" width="300"/></a>
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_02_thumb.jpeg" alt="22"
-                                          height="300" width="300"></a>
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_03_thumb.jpeg" alt="33"
-                                          height="300" width="300"></a>
-                <a class="thumbnail"><img class="img-thumbnail" src="resources/images/image_04_thumb.jpeg" alt="44"
-                                          height="300" width="300"></a>
+            <div class="thumbs">
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_thumb.jpeg"
+                     alt="1st image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_02_thumb.jpeg"
+                     alt="2nd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_03_thumb.jpeg"
+                     alt="3rd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_04_thumb.jpeg"
+                     alt="4th image description"/>
             </div>
         </div>
-        <!--<a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
-                width="300"></a>-->
-        <!--    <div th:object="${store}">
-        <p th:text="*{id}"> </p>-->
-        <!--  <input type="hidden" th:field="*{store.image}">
-          <div th:each="stores : ${stores}">-->
-        <!--  <a><img alt="" class="img-thumbnail" height="300" th:src="*{sto }" width="300"></a>-->
 
-        <!--<p th:each="boards : ${boards}" th:if="*{boards.user.getId()} == '2'" th:text="${boards.getTitle()}"></p>-->
         <br>
         <p>There’s something to tell you
             You want me to share it with you
