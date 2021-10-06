@@ -17,16 +17,16 @@ public class Picture {
     @JsonIgnore
     private Store store;
 
-    private String image1;
-    private String image2;
-    private String image3;
-    private String image4;
+    private String large1;
+    private String large2;
+    private String large3;
+    private String large4;
 
     //thumbnail
-    private String image5;
-    private String image6;
-    private String image7;
-    private String image8;
+    private String thumb1;
+    private String thumb2;
+    private String thumb3;
+    private String thumb4;
 
 
 }
