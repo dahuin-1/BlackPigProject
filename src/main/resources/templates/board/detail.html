@@ -84,8 +84,8 @@
                             <p th:text="${boards.rating}"></p>
                             <p th:text="${boards.title}"></p>
                             <p th:text="${boards.id}"></p>
-                            <button class="btn btn-outline-light" type="button"
-                                    th:href="@{/board/view(id=${boards.id})}">자세한 후기 보러가기
+                            <button class="btn btn-outline-light" type="button">
+                                <a th:href="@{/board/view(id=${boards.id})}">자세한 후기 보러가기</a>
                             </button>
                         </div>
                     </div>
@@ -96,8 +96,8 @@
                         <div th:each="boards : ${boards}" th:if="${boards.user.id} == '1'">
                             <p th:text="${boards.rating}"></p>
                             <p th:text="${boards.title}"></p>
-                            <button class=" btn btn-outline-secondary" type="button"
-                                    th:href="@{/board/view(id=${boards.id})}">자세한 후기 보러가기
+                            <button class=" btn btn-outline-secondary" type="button">
+                                <a th:href="@{/board/view(id=${boards.id})}">자세한 후기 보러가기</a>
                             </button>
                         </div>
                     </div>
@@ -120,6 +120,7 @@
             $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
             $('#description').html($(this).attr('alt'));
         });
+
 
         <!-- $('#thumbs').click(function(){
              $('#largeImage').attr('src',$(this).attr('src').replace('2','1'));
