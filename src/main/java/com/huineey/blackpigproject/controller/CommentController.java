@@ -37,7 +37,12 @@ public class CommentController {
         Comment newComment = new Comment();
         newComment.setBoard(board);
         newComment.setContent(comment);
-        newComment.setWriter("newComment.getWriter()");
+        newComment.setWriter(username);
         return commentRepository.save(newComment);
+    }
+
+    @DeleteMapping("/comments/{id}")
+    void deleteBoard(@PathVariable Long id) {
+        commentRepository.deleteById(id);
     }
 }
