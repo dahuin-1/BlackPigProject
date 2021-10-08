@@ -9,6 +9,9 @@
 
     <link href="carousel.css" th:href="@{/carousel.css}" rel="stylesheet">
     <title>삐슐랭가이드</title>
+    <style>
+
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
@@ -39,8 +42,8 @@
                      alt="4th image description"/>
             </div>
         </div>
-
         <br>
+        <div class="store_info">
         <p>There’s something to tell you
             You want me to share it with you
             STAYC girls it’s going down
@@ -75,6 +78,8 @@
             보이겠지만 미안하지만
             색안경을 끼고 보지 마요
         </p>
+        </div>
+        <br>
         <div class="container">
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
@@ -84,8 +89,8 @@
                             <p th:text="${boards.rating}"></p>
                             <p th:text="${boards.title}"></p>
                             <p th:text="${boards.id}"></p>
-                            <button class="btn btn-outline-light" type="button">
-                                <a th:href="@{/board/view(id=${boards.id})}">자세한 후기 보러가기</a>
+                            <button class="btn btn-outline-secondary" type="button">
+                                <a class="link" th:href="@{/board/view(id=${boards.id})}"><div class="linkToWhite">자세한 후기 보러가기</div></a>
                             </button>
                         </div>
                     </div>
@@ -97,7 +102,7 @@
                             <p th:text="${boards.rating}"></p>
                             <p th:text="${boards.title}"></p>
                             <button class=" btn btn-outline-secondary" type="button">
-                                <a th:href="@{/board/view(id=${boards.id})}">자세한 후기 보러가기</a>
+                                <a class="link" th:href="@{/board/view(id=${boards.id})}"><div class="linkToBlack">자세한 후기 보러가기</div></a>
                             </button>
                         </div>
                     </div>

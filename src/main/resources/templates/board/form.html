@@ -13,19 +13,9 @@
 <div class="container">
     <h2>후기</h2>
     <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
-        <input type="hidden" th:field="*{id}"> <!--키값(id)전달-->
-        <!--<div class="form-group">
-            <input type="radio" name="store" value="1">정식당
-            <input type="radio" name="store" value="2">모퉁이우
-            <input type="radio" name="store" value="3">주옥
-            <input type="radio" name="store" value="4">임프레션
-            <input type="radio" name="store" value="5">청담우월
-        </div>
-        <button type="button" onclick="displayRadioValue()">
-            Submit
-        </button>-->
+        <input type="hidden" th:field="*{id}">
         <br>
-        <div id="result"></div>
+        <div id="main">
         <div class="form-group">
             <label>[리뷰를 작성하고 싶은 식당을 선택해주세요]</label><br>
             <input type="radio" name="store" value="1" id="1" th:field="*{store}">정식당 &nbsp;
@@ -58,17 +48,18 @@
         <a type="button" class="btn btn-dark" th:href="@{/board/view(id=${board.id})}">취소</a>
         <button type="button" class="btn btn-dark" th:onclick="|deleteBoard(*{id})|">삭제</button>
         <button type="submit" class="btn btn-dark">확인</button>
+        </div>
     </form>
     <br>
 
-    <div id="comment_form" style="display: none" th:object="${board}" method="post">
+    <!--<div id="comment_form" style="display: none" th:object="${board}" method="post">
         <input id="board_id" type="hidden" th:value="*{id}">
         <label for="content"> [댓글] </label>
-        <!--<label for="content"> 댓글 내용 </label>-->
         <textarea class="form-control" name="comment" id="comment" row="3" placeholder="댓글을 남겨주세요"></textarea><br>
         <button id="write_comment_btn" type="button" class="btn btn-dark">작성</button>
         <button id="delete_comment_btn" type="button" class="btn btn-dark">삭제</button>
-    </div>
+    </div>-->
+
 </div>
 <footer th:replace="fragments/common :: footer"></footer>
 <script th:inline="javascript">
