@@ -2,6 +2,7 @@ package com.huineey.blackpigproject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,6 +22,13 @@ public class Board {
     private String content;
 
     private String rating;
+
+    @Formula("(select count(user) from Likes l where l.post_id = id)")
+    private int countLike;
+
+    public boolean isLiked(){
+        return getCountLike() > 0;
+    }
 
   /*  @NotNull
     @Size(min=1, max=1, message = "스토어 아이디는 숫자로만 입력해주세요")
