@@ -2,7 +2,6 @@ package com.huineey.blackpigproject.controller;
 
 import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Comment;
-import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.CommentRepository;
 import com.huineey.blackpigproject.service.BoardService;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 import java.util.List;
 
-//게시판
 
 @Controller
 @RequestMapping("/board")
@@ -30,7 +28,6 @@ public class BoardController {
 
     @Autowired
     private BoardRepository boardRepository;
-
 
     @Autowired
     private CommentRepository commentRepository;
