@@ -23,12 +23,12 @@ public class Board {
 
     private String rating;
 
-    @Formula("(select count(user) from Likes l where l.post_id = id)")
+   /* @Formula("(select count(user) from Likes l where l.post_id = id)")
     private int countLike;
 
     public boolean isLiked(){
         return getCountLike() > 0;
-    }
+    }*/
 
   /*  @NotNull
     @Size(min=1, max=1, message = "스토어 아이디는 숫자로만 입력해주세요")

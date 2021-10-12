@@ -62,22 +62,43 @@
                 <li class="nav-item">
                     <a class="nav-link" th:classappend="${menu} == 'gallery'? 'active'" aria-current="page"
                        th:href="@{/gallery}">이미지 모아보기</a>
-                    <small class="d-md-none ms-2">GitHub</small>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:classappend="${menu} == 'login'? 'active'" aria-current="page"
-                       th:href="@{/gallery}">로그인</a>
-                    <small class="d-md-none ms-2">GitHub</small>
                 </li>
 
+                <li class="nav-item">
+
+                </li>
+
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/account/login}">로그인</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/account/register}">회원가입</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" sec:authentication="name">사용자</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" sec:authentication="principal.authorities">권한</a>
+                </li>
+                <form class="form-inline my-2 mr-2 my-lg-0" th:action="@{/logout}" method="post"
+                      sec:authorize="isAuthenticated()">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+                </form>
+
             </ul>
+
+           <!-- //변수처럼 사용하고 싶은 경우
+            <a th:href="@{'/users/'+ ${#authentication.principal.id}}">마이페이지</a>-->
+
+            <form class="d-flex" method="GET" th:action="@{/board/list}">
+                <input class="form-control me-2" id="searchText" name="searchText" type="search" placeholder="Search"
+                       aria-label="Search" th:value="${param.searchText}">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
-        <form class="d-flex" method="GET" th:action="@{/board/list}">
-            <input class="form-control me-2" id="searchText" name="searchText" type="search" placeholder="Search"
-                   aria-label="Search" th:value="${param.searchText}">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
+
+        </div>
+
 </nav>
 
 <footer th:fragment="footer">
