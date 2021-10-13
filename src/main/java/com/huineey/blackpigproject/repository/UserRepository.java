@@ -9,4 +9,5 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = {"boards"}) //n+1조인문제해결
     List<User> findAll();
+    User findByUsername(String username);
 }

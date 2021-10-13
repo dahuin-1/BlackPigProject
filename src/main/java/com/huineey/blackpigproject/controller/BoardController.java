@@ -7,6 +7,7 @@ import com.huineey.blackpigproject.repository.CommentRepository;
 import com.huineey.blackpigproject.service.BoardService;
 import com.huineey.blackpigproject.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,16 +42,12 @@ public class BoardController {
     @GetMapping("list")
     public String list(Model model, @PageableDefault(size = 10) Pageable pageable,
                        @RequestParam(required = false, defaultValue = "") String searchText, Long id) {
-        // List<Board> boards = boardRepository.findAll();
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
-        // List<Store> store = storeService.getStoreName(boards.getNumber());
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("boards", boards);
-        //  model.addAttribute("store",store);
-        //  System.out.println(store.get(0).getName());
         return "board/list";
     }
 
@@ -79,21 +76,14 @@ public class BoardController {
     }
 
     @PostMapping("/form")
-    public String postForm(@Valid Board board, BindingResult bindingResult) {
+    public String postForm(@Valid Board board, BindingResult bindingResult, Authentication authentication) {
         boardValidator.validate(board, bindingResult);
-
         if (bindingResult.hasErrors()) {
             return "board/form";
         }
-
-        //Authentication a = SecurityContextHolder.getContext().getAuthentication(); 컨트롤러가 아닌 서비스 클래스에선 이렇게
-        String username = "주인장";
+        String username = authentication.getName();
         board.setStore(board.getStore());
-        //authentication.getName();
-        //  System.out.println("----------------------"+board);
         boardService.save(username, board);
         return "redirect:/board/list"; //리스트로 리다이렉트가 되면, 리스트에서 다시 한번 조회가 되면서 화면이 이동
     }
-
-
 }

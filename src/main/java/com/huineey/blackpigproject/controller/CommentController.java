@@ -4,7 +4,9 @@ import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.Comment;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.CommentRepository;
+import com.huineey.blackpigproject.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
@@ -20,25 +22,35 @@ public class CommentController {
     @Autowired
     CommentRepository commentRepository;
 
+    @Autowired
+    CommentService commentService;
+
     @GetMapping("/comments")
-    List<Comment> all(@RequestParam(required = false, defaultValue = "") String content) {
+    public List<Comment> all(@RequestParam(required = false, defaultValue = "") String content) {
         if (StringUtils.isEmpty(content)) {
             return commentRepository.findAll();
         }
         return commentRepository.findCommentByContent(content);
     }
 
-    @PostMapping("/comments/{id}")
-    Comment CreateComment(@RequestParam String comment, @PathVariable Long id) {
-        //validation
+   /* @PostMapping("/comments/{id}")
+    Comment CreateComment(@RequestParam String comment, @PathVariable Long id, Authentication authentication) {
         Board board = boardRepository.findOneById(id);
-        String username = "댓쓴이";
-                //= authentication.getName();
+        String username = authentication.getName();
         Comment newComment = new Comment();
-        newComment.setBoard(board);
-        newComment.setContent(comment);
-        newComment.setWriter(username);
+        commentService.save(newComment);
+
         return commentRepository.save(newComment);
+    }*/
+
+       @PostMapping("/comments/{id}")
+       public String CreateComment(@RequestParam(required=false) String content, @PathVariable Long id, Authentication authentication) {
+        //Board board = boardRepository.findOneById(id);
+        String username = authentication.getName();
+       // Comment newComment = new Comment();
+        //newComment.setContent(content);
+        commentService.save(id,username,content);
+        return "redirect:";
     }
 
     @DeleteMapping("/comments/{id}")
