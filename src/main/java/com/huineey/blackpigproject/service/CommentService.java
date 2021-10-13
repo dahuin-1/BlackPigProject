@@ -20,13 +20,13 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public Comment save(Long id, String username, String content) {
+    /*public Comment save(Long id, String username, String text) {
         Board board = boardRepository.findOneById(id);
         User user = userRepository.findByUsername(username);
         Comment newComment = new Comment();
         newComment.setBoard(board);
-        newComment.setContent(content);
+        newComment.setText(text);
         newComment.setUser(user);
         return commentRepository.save(newComment);
-    }
+    }*/
 }

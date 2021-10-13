@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/common :: head('게시판')">
+<head th:replace="fragments/common :: head('삐슐랭가이드 : 후기보기')">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -73,22 +73,22 @@
             <label for="content"> [댓글] </label>
             <textarea class="form-control" name="comment" id="comment" placeholder="댓글을 남겨주세요"></textarea><br>
             <div class="d-flex flex-row-reverse bd-highlight">
-                    <button id="write_comment_btn" type="button" class="btn btn-dark"
-                            th:onclick="|writeComment(*{id})|">작성</button>
+                <button id="write_comment_btn" type="button" class="btn btn-dark"
+                        th:onclick="|writeComment(*{id})|">작성</button>
             </div>
         </div>
 
         <br>
-        <th:block th:each="comment : ${comments}">
+        <th:block th:each="comments : ${comments}"> <!--이거 그 모델 컨트롤러에서 준 코멘츠-->
             <div class="card">
                 <div class="d-flex bd-highlight">
                     <div class="p-2 flex-grow-1 bd-highlight">
                         <div class="card-body">
-                            <strong th:text="${comment.user.username}"></strong><br/>
-                            <a style="text-decoration: none" th:text="${comment.content}"></a></div>
+                            <strong th:text="${comments.user.username}"></strong><br/>
+                            <a style="text-decoration: none" th:text="${comments.text}"></a></div>
                     </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
-                        <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comment.id})|">삭제
+                        <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comments.id})|">삭제
                         </button>
                     </div>
                 </div>
