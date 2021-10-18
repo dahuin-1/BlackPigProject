@@ -9,6 +9,8 @@ import com.huineey.blackpigproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentService {
     @Autowired
@@ -29,4 +31,10 @@ public class CommentService {
         newComment.setUser(user);
         return commentRepository.save(newComment);
     }*/
+
+    public List<Comment> getCommentWriter (Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        List<Comment> comments = commentRepository.findCommentByUser(user);
+        return comments;
+    }
 }

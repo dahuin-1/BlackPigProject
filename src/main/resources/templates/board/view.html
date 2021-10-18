@@ -62,7 +62,7 @@
         <br><br>
 
         <a type="button" class="btn btn-dark" th:href="@{/board/list}">뒤로가기</a>
-        <button type="button" class="btn btn-dark" th:onclick="|deleteBoard(*{id})|">삭제</button>
+        <button type="button" class="btn btn-dark" sec:authorize="hasRole('ROLE_ADMIN')" th:onclick="|deleteBoard(*{id})|">삭제</button>
         <a type="button" class="btn btn-dark" th:href="@{/board/form(id=${board.id})}">수정</a>
     </form>
     <br/>
