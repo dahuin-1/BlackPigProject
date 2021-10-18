@@ -8,6 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpResponse;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -33,6 +41,7 @@ class BoardApiController {
     Board newBoard(@RequestBody Board newBoard) {
         return boardRepository.save(newBoard);
     }
+
 
    /* @PostMapping("/boards/{id}")
     Board SelectStore(@RequestParam String comment, @PathVariable Long id) {
