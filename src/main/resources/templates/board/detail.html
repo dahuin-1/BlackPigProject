@@ -23,6 +23,7 @@
             <br>
             <h1 th:text="*{name}">삐슐랭가이드</h1>
             <p class="lead" th:text="*{address}">hello, world</p>
+            <p></p>
             <br>
         </div>
         <div id="gallery">
@@ -118,19 +119,20 @@
 </main>
 <footer th:replace="fragments/common :: footer">
     <script th:inline="javascript">
-        var header = /*[[${_csrf.headerName}]]*/;
-        var token = /*[[${_csrf.token}]]*/;
+        var imageSrc = "https://ldb-phinf.pstatic.net/20210630_251/1625056364920kgD0s_JPEG/BCKmftVxXxlabOSZdHjFj6JK.jpg";
+
+        function test() {
+            show(imageSrc)
+            
+        }
+
+
 
         $('#thumbs').delegate('img', 'click', function () {
             $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
             $('#description').html($(this).attr('alt'));
         });
 
-
-        <!-- $('#thumbs').click(function(){
-             $('#largeImage').attr('src',$(this).attr('src').replace('2','1'));
-             $('#description').html($(this).attr('alt'));
-         });-->
         /*$('#thumbs').click(function () {
             // Grab img.thumb class src attribute
             // NOTE: ALL img tags must have use this class,
