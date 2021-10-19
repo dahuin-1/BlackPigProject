@@ -33,6 +33,11 @@ public class AccountController {
         return "account/register";
     }
 
+    @GetMapping("/select")
+    public String select() {
+        return "account/select";
+    }
+
     @PostMapping("/register")
     public String register(User user) {
         userService.save(user);
