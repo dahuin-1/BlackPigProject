@@ -43,7 +43,7 @@ public class CommentController {
         //validation
         Board board = boardRepository.findOneById(id);
         String username = authentication.getName();
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).orElse(null);
         Comment newComment = new Comment();
         newComment.setBoard(board);
         newComment.setText(comment);
@@ -54,7 +54,7 @@ public class CommentController {
     @DeleteMapping("/comments/{id}")
     void deleteBoard(@PathVariable Long id,Authentication authentication) {
         String username = authentication.getName();
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).orElse(null);
         commentRepository.findCommentByUser(user);
         commentRepository.deleteById(id);
     }

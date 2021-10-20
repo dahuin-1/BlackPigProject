@@ -1,14 +1,19 @@
 package com.huineey.blackpigproject.service;
 
 
+import com.huineey.blackpigproject.dto.UserDTO;
 import com.huineey.blackpigproject.model.Role;
 import com.huineey.blackpigproject.model.User;
 import com.huineey.blackpigproject.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     @Autowired
@@ -28,4 +33,16 @@ public class UserService {
     }
 
 
+    public Long join(UserDTO user) {
+        Long id = userRepository.save(
+                User.builder()
+                        .username(user.getUsername())
+                        .password(passwordEncoder.encode(user.getPassword()))
+                        .roletype(Collections.singletonList("ROLE_USER"))
+                        .build())
+                .getId();
+        return id;
+    }
 }
+
+

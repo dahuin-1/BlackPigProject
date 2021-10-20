@@ -27,17 +27,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
+                .csrf().disable() //웹을 통한 로그인이 목적이 아니기 때문에 비활성화
                 .authorizeRequests()
-                .antMatchers("/", "/account/register","/account/select","/css/**","/api/**", "/gallery","/board/list").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/account/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+                .antMatchers("/", "/account/**", "/css/**","/api/**", "/gallery","/board/list").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN") // ADMIN권한 접근 가능
+                .antMatchers("/user/**").hasRole("USER") // USER권한 접근 가능
+                .anyRequest().authenticated();
+                //.and()
+               // .formLogin()
+               // .loginPage("/account/login")
+                //.permitAll()
+                //.and()
+               // .logout()
+                //.permitAll();
     }
 
     /*@Bean
@@ -53,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new InMemoryUserDetailsManager(user);
     }*/
 
-    @Autowired
+   /* @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.jdbcAuthentication()
@@ -66,18 +68,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         + "from user_role ur inner join user u on ur.user_id = u.id "
                         + "inner join role r on ur.role_id = r.id "
                         + "where u.username = ?");
-    }
+    }*/
 
-    @Bean
+   @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+   /* @Bean
     public SpringSecurityDialect springSecurityDialect(){
         return new SpringSecurityDialect();
-    }
-
-    //
+    }*/
 
 }
