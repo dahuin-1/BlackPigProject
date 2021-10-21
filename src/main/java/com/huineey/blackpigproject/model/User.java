@@ -28,12 +28,6 @@ public class User {
 
     private Boolean enabled;
 
-    // roleType
-    @ElementCollection(fetch = FetchType.EAGER)
-    //@OneToMany(mappedBy = "user")
-    @Builder.Default
-    private List<String> roletype = new ArrayList<>();
-
    /* @ManyToMany
     @JoinTable(
             name = "user_role",

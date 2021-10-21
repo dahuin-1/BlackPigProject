@@ -38,7 +38,7 @@ public class UserService {
                 User.builder()
                         .username(user.getUsername())
                         .password(passwordEncoder.encode(user.getPassword()))
-                        .roletype(Collections.singletonList("ROLE_USER"))
+                        //.roletype(Collections.singletonList("ROLE_USER"))
                         .build())
                 .getId();
         return id;
