@@ -32,14 +32,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/account/**", "/css/**","/api/**", "/gallery","/board/list").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN") // ADMIN권한 접근 가능
                 .antMatchers("/user/**").hasRole("USER") // USER권한 접근 가능
-                .anyRequest().authenticated();
-                //.and()
-               // .formLogin()
-               // .loginPage("/account/login")
-                //.permitAll()
-                //.and()
-               // .logout()
-                //.permitAll();
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+               .loginPage("/account/login")
+                .permitAll()
+                .and()
+               .logout()
+                .permitAll();
     }
 
     /*@Bean
