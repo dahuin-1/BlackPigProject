@@ -11,3 +11,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAll();
     User findByUsername(String username);
 }
+// reset aad51cef075912fafd4eb3a17fe7bb067e5cc8d7
