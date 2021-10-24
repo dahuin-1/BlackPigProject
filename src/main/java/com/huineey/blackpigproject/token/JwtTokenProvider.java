@@ -1,13 +1,21 @@
 package com.huineey.blackpigproject.token;
 
 import com.huineey.blackpigproject.model.Role;
+import com.huineey.blackpigproject.service.CustomUserDetailService;
+import com.huineey.blackpigproject.service.UserService;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +23,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {
+
+    private final CustomUserDetailService customUserDetailService;
 
     // 키
     private String secretKey = "secretKey-test-authorization-jwt-manage-token";
@@ -43,11 +53,34 @@ public class JwtTokenProvider {
                 .compact(); // 생성
     }
 
-    // TODO 토큰에서 인증정보 조회
+    // JWT 토큰에서 인증 정보 조회
+    public Authentication getAuthentication(String token) {
+        UserDetails userDetails = customUserDetailService.loadUserByUsername(this.getUsername(token));
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
 
-    // TODO 토큰에서 회원정 추출
 
-    // TODO 요청 헤더에서 토큰 추출
+    // 토큰에서 회원 정보 추출
+    public String getUsername(String token) {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
 
-    // TODO 토큰의 유효성 확인
+
+    // Request의 Header에서 token 값을 가져옵니다. "authorization" : "token'
+    public String resolveToken(HttpServletRequest request) {
+        if(request.getHeader("authorization") != null )
+            return request.getHeader("authorization").substring(7);
+        return null;
+    }
+
+    // 토큰의 유효성 + 만료일자 확인
+    public boolean validateToken(String jwtToken) {
+        try {
+            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
+            return !claims.getBody().getExpiration().before(new Date());
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

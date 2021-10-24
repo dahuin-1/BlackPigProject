@@ -53,7 +53,7 @@ public class AccountController {
 
     // 회원가입
     @PostMapping("/register")
-    public String join(UserDTO user) {
+    public String join(@RequestBody UserDTO user) {
         Long userId = userService.join(user);
         User newUser = userRepository.findById(userId).orElse(null);
         userRepository.save(newUser);

@@ -21,40 +21,48 @@
       <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password">
       <label for="inputPassword">Password</label>
     </div>-->
-    <form name="join" method="post">
-        <div class="form-floating">
-            <input type="text" id="username" name="username" class="form-control" placeholder="이름을 입력하세요">
-            <label for="username">Username</label>
-        </div>
-        <div class="form-floating">
-            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="비밀번호를 입력하세요">
-            <label for="inputPassword">Password</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" th:onclick="join_ajax()">회원가입</button>
-    </form>
-
+  <form name="register">
+    <!-- <div name="joindata" id="joindata">th:method="post"> -->
+    <div class="form-floating">
+        <input type="text" id="username" name="username" class="form-control" placeholder="이름을 입력하세요">
+        <label for="username">Username</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" id="inputPassword" name="password" class="form-control"
+               placeholder="비밀번호를 입력하세요">
+        <label for="inputPassword">Password</label>
+    </div>
+    <!--</div>-->
+    <button class="w-100 btn btn-lg btn-primary" th:onclick="join()"
+            name="submit" id="submit">회원가입</button>
+   </form>
+</form>
 
 <footer th:replace="fragments/common :: footer"></footer>
 <script>
-    function join_ajax(){
-        var datas = objToJson($("form[name=join]").serializeArray());
+    function join() {
+          //  alert("test")
+            var datas = objToJson($("form[name=register]").serializeArray());
+            //var datas = objToJson($("#joinform").serializeArray());
 
-        $.ajax({
-            type : 'POST',
-            url : 'http://localhost:8080/account/register',
-            data : JSON.stringify(datas),
-            dataType : 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
-            contentType : "application/json",
-            error: function(xhr, status, error){
-                alert(error);
-            },
-            success : function(token){
-                console.log(token);
-               // var expireDay = 24 * 60 * 60 * 1000; //1일
-              //  document.cookie = "X-AUTH-TOKEN=" + token + expireDay +"; path=/";
-
-            },
-        });
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/account/register',
+               // accept: "application/json",
+                data: JSON.stringify(datas),
+                dataType: 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
+                contentType: "application/json",
+                error: function (xhr, status, error) {
+                    alert(error);
+                },
+                success: function (token) {
+                    console.log(token);
+                    alert("test");
+                    //window.location.reload();
+                     var expireDay =  30 * 60 * 1000L; //1일
+                     document.cookie = "X-AUTH-TOKEN=" + token + expireDay +"; path=/";
+                },
+            });
     }
 </script>
 </body>
