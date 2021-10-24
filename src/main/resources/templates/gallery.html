@@ -16,9 +16,24 @@
 <main role="main" class="container">
   <div class="starter-template">
     <h1>갤러리</h1>
-    <p class="lead" >hello, world</p>
-   <a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
-            width="300"></a>
+    <p class="lead">삐슐랭 가이드에 등재된 사진을 모아서 볼수 있습니다.</p>
+    <div id="gallery">
+      <div id="panel">
+        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_large.jpeg" id="largeImage"
+             height="400" width="400" onclick="test();">
+        <div id="description">1st image description</div>
+      </div>
+      <div class="thumbs">
+        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_thumb.jpeg"
+             alt="1st image description"/>
+        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_02_thumb.jpeg"
+             alt="2nd image description"/>
+        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_03_thumb.jpeg"
+             alt="3rd image description"/>
+        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_04_thumb.jpeg"
+             alt="4th image description"/>
+      </div>
+    </div>
     <br>
     <p>There’s something to tell you
       You want me to share it with you

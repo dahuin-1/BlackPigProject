@@ -23,26 +23,10 @@
             <br>
             <h1 th:text="*{name}">삐슐랭가이드</h1>
             <p class="lead" th:text="*{address}">hello, world</p>
-            <p></p>
+            <다></p>
             <br>
         </div>
-        <div id="gallery">
-            <div id="panel">
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_large.jpeg" id="largeImage"
-                     height="400" width="400" onclick="test();">
-                <div id="description">1st image description</div>
-            </div>
-            <div class="thumbs">
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_thumb.jpeg"
-                     alt="1st image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_02_thumb.jpeg"
-                     alt="2nd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_03_thumb.jpeg"
-                     alt="3rd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_04_thumb.jpeg"
-                     alt="4th image description"/>
-            </div>
-        </div>
+
         <br>
         <div class="store_info">
         <p>There’s something to tell you
@@ -86,10 +70,9 @@
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
                         <h2>삐약 별점</h2>
-                        <div th:each="boards : ${boards}" th:if="${boards.user.id} == '2'">
+                        <div th:each="boards : ${boards}" th:if="${boards.user.id} == '88'">
                             <p th:text="${boards.rating}"></p>
                             <p th:text="${boards.title}"></p>
-                            <p th:text="${boards.id}"></p>
                             <button class="btn btn-outline-secondary" type="button">
                                 <a class="link" th:href="@{/board/view(id=${boards.id})}"><div class="linkToWhite">자세한 후기 보러가기</div></a>
                             </button>
@@ -99,7 +82,7 @@
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
                         <h2>다흰 별점</h2>
-                        <div th:each="boards : ${boards}" th:if="${boards.user.id} == '1'">
+                        <div th:each="boards : ${boards}" th:if="${boards.user.id} == '3'">
                             <p th:text="${boards.rating}"></p>
                             <p th:text="${boards.title}"></p>
                             <button class=" btn btn-outline-secondary" type="button">
@@ -113,7 +96,7 @@
 
         <br>
         <div class="d-flex justify-content-end">
-            <a th:href="@{/board/list}">다른 후기가 궁금하다면?</a>
+            <a class="link" th:href="@{/board/list}"><div class="linkToBlack">다른 후기가 궁금하다면? click</div></a>
         </div>
     </div>
 </main>
