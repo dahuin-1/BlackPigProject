@@ -21,7 +21,7 @@
       <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password">
       <label for="inputPassword">Password</label>
     </div>-->
-  <form name="register">
+  <form name="register" id="register">
     <!-- <div name="joindata" id="joindata">th:method="post"> -->
     <div class="form-floating">
         <input type="text" id="username" name="username" class="form-control" placeholder="이름을 입력하세요">
@@ -35,21 +35,28 @@
     <!--</div>-->
     <button class="w-100 btn btn-lg btn-primary" th:onclick="join()"
             name="submit" id="submit">회원가입</button>
-   </form>
+  </form>
+
 </form>
 
 <footer th:replace="fragments/common :: footer"></footer>
 <script>
     function join() {
-          //  alert("test")
-            var datas = objToJson($("form[name=register]").serializeArray());
-            //var datas = objToJson($("#joinform").serializeArray());
-
-            $.ajax({
+        alert("click")
+        const temp = $("#register").val();
+        const data = $("#register").serializeArray();
+        var datas = objToJson($("form[name=register]").serializeArray());
+        //let sendData = "username="+$('input[username=username]').val()
+           // + "password="+$('input[password=password]').val();
+        alert(temp)
+        alert(data)
+        alert(datas)
+        $.ajax({
                 type: 'POST',
                 url: 'http://localhost:8080/account/register',
-               // accept: "application/json",
-                data: JSON.stringify(datas),
+                accept: "application/json",
+                //data: JSON.stringify(datas),
+                data:sendData,
                 dataType: 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
                 contentType: "application/json",
                 error: function (xhr, status, error) {
@@ -57,9 +64,9 @@
                 },
                 success: function (token) {
                     console.log(token);
-                    alert("test");
+                    alert(this.data);
                     //window.location.reload();
-                     var expireDay =  30 * 60 * 1000L; //1일
+                     var expireDay =  24 * 60 * 60 * 1000; //1일
                      document.cookie = "X-AUTH-TOKEN=" + token + expireDay +"; path=/";
                 },
             });

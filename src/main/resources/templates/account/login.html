@@ -11,7 +11,7 @@
 
 <body class="text-center">
 
-<form class="form-signin" th:action="@{/account/login}" method="post">
+<form class="form-signin" name="login" th:action="@{/account/login}" method="post">
   <a th:href="@{/}">홈으로돌아가기</a>
   <h1 class="h3 mb-3 fw-normal">로그인 해주세요</h1>
   <div class="alert alert-danger" role="alert" th:if="${param.error}">
@@ -28,15 +28,15 @@
     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password">
     <label for="inputPassword">Password</label>
   </div>
-
-  <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+  <button class="w-100 btn btn-lg btn-primary" id="submit">로그인</button>
+  <!--<button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>-->
 </form>
 
 <footer th:replace="fragments/common :: footer"></footer>
 <script>
-  function login_ajax(){
-    var datas = objToJson($("form[name=loginCustom]").serializeArray());
-
+  $('#submit').click(function(){   //submit 버튼을 클릭하였을 때
+    alert("test")
+    var datas = objToJson($("form[name=login]").serializeArray());
     $.ajax({
       type : 'POST',
       url : 'http://localhost:8080/account/login',
@@ -53,7 +53,7 @@
 
       },
     });
-  }
+  });
 </script>
 
 </body>
