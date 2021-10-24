@@ -91,7 +91,7 @@
             <a th:href="@{'/users/'+ ${#authentication.principal.id}}">마이페이지</a>-->
 
             <form class="d-flex" method="GET" th:action="@{/board/list}">
-                <input class="form-control me-2" id="searchText" name="searchText" type="search" placeholder="Search"
+                <input class="form-control me-2" id="searchText" name="searchText" type="search" placeholder="글찾기"
                        aria-label="Search" th:value="${param.searchText}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
