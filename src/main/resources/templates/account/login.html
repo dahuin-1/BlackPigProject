@@ -35,11 +35,11 @@
 <footer th:replace="fragments/common :: footer"></footer>
 <script>
   $('#submit').click(function(){   //submit 버튼을 클릭하였을 때
-    alert("test")
+    alert("로그인되었습니다")
     var datas = objToJson($("form[name=login]").serializeArray());
     $.ajax({
       type : 'POST',
-      url : 'http://localhost:8080/account/login',
+      url : '/account/login',
       data : JSON.stringify(datas),
       dataType : 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
       contentType : "application/json",

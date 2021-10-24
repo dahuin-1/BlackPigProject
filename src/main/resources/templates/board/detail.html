@@ -23,9 +23,24 @@
             <br>
             <h1 th:text="*{name}">삐슐랭가이드</h1>
             <p class="lead" th:text="*{address}">hello, world</p>
-            <다></p>
             <br>
         </div>
+        <div id="gallery">
+            <div id="panel">
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_large.jpeg" id="largeImage"
+                     height="400" width="400" onclick="test();">
+                <div id="description">1st image description</div>
+            </div>
+            <div class="thumbs">
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_01_thumb.jpeg"
+                     alt="1st image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_02_thumb.jpeg"
+                     alt="2nd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_03_thumb.jpeg"
+                     alt="3rd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_04_thumb.jpeg"
+                     alt="4th image description"/>
+            </div>
 
         <br>
         <div class="store_info">
