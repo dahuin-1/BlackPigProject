@@ -48,42 +48,9 @@
                 <script>document.getElementById('logo').src = logo_info()</script>
             </div>
         </div>
-
         <br>
         <div class="store_info">
-            <p>There’s something to tell you
-                You want me to share it with you
-                STAYC girls it’s going down
-                오늘 유난히 티가 더 나는 걸
-                모두 쳐다보는 게 다 보여
-                왠지 그럴수록 더 난 당당해져
-                기분 좋아지는 걸
-                머릴 넘기며 어디든 지나가네
-                내 달콤한 향수가 흩날리게 Yeah
-                항상 날 꾸미는 게 좋아
-                예쁜 게 좋아 근데 들어봐 Yeah
-                나도 알아 내 모습이
-                이뻐 보일지도 당돌한 걸지도
-                자꾸만 널 유혹하듯
-                보이겠지만 미안하지만
-                색안경을 끼고 보지 마요
-                난 좀 다른 여자인데
-                겉은 화려해도 아직 두려운 걸
-                You should know
-                I’m a good girl yeah
-                너무 세게 안으면 숨 막혀요
-                조금 서투를지도 난 아직도
-                색안경을 끼고 보지 마요
-                Oh baby baby baby
-                패션은 과감한 게 좋아 Like it uh huh
-                튀는 게 좋아 어떻게든 소화 Yeah
-                가끔 나조차 진짜 내 맘을 몰라
-                그런 나지만
-                나도 알아 내 모습이
-                이뻐 보일지도 당돌한 걸지도
-                자꾸만 널 유혹하듯
-                보이겠지만 미안하지만
-                색안경을 끼고 보지 마요
+            <p>
             </p>
         </div>
         <br>
@@ -136,22 +103,12 @@
             let area;
             for (let i = 0; i <= 4; i++) {
                 if(area === i) {
-                    //img_src = 'https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_' + i + '-1_thumb.jpeg';
-                    img_src = "https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg";
+                    img_src = 'https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_' + i + '-1_thumb.jpeg';
+                    //img_src = "https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg";
                 }
             }
             return img_src;
         }
-
-        /*var user_area = <%=user.area%>;
-          for(var i=1; i<=4; i++) {
-             var img_src;
-             if (user_area === i) {
-                img_src = 'https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_' + i + '-1_thumb.jpeg';
-            }
-        }
-        return img_src;*/
-
 
         /* function title_info() {
              var user_area = <%=user.area%>;

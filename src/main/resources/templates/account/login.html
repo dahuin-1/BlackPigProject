@@ -36,7 +36,7 @@
 <script>
   $('#submit').click(function(){   //submit 버튼을 클릭하였을 때
     alert("로그인되었습니다")
-    var datas = objToJson($("form[name=login]").serializeArray());
+    var datas = objToJson($("form[name=login]").serializeArray()); //여기서부턴 실행 안됌
     $.ajax({
       type : 'POST',
       url : '/account/login',

@@ -1,6 +1,5 @@
 package com.huineey.blackpigproject.controller;
 
-import com.huineey.blackpigproject.model.Role;
 import com.huineey.blackpigproject.model.User;
 import com.huineey.blackpigproject.model.UserDTO;
 import com.huineey.blackpigproject.repository.UserRepository;
@@ -16,12 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 
 @Controller
 @RequestMapping("/account")
@@ -52,7 +45,7 @@ public class AccountController {
         return "redirect:/";
     }
 
-    // jwt토큰 발급 회원가입용 컨트롤러 + js 연결실패
+    // jwt토큰 발급 회원가입용 컨트롤러 + js 연결실패, 추후 연결 예정
     /*@PostMapping("/register")
     public String join(@RequestBody UserDTO user) {
         Long userId = userService.join(user);

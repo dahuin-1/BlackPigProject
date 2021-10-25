@@ -32,7 +32,6 @@ public class JwtTokenProvider {
     // 토큰 유효시간 | 30min
     private long tokenValidTime = 30 * 60 * 1000L;
 
-    // 의존성 주입 후, 초기화를 수행
     // 객체 초기화, secretKey를 Base64로 인코딩한다.
     @PostConstruct
     protected void init() {

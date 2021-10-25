@@ -52,7 +52,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/comments/{id}")
-    void deleteBoard(@PathVariable Long id,Authentication authentication) {
+    void deleteComment(@PathVariable Long id,Authentication authentication) {
         String username = authentication.getName();
         User user = userRepository.findByUsername(username).orElse(null);
         commentRepository.findCommentByUser(user);

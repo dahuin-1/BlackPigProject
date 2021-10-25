@@ -30,9 +30,8 @@ class UserApiController {
 
     @GetMapping("/users")
     List<User> all() {
-        List<User> users = userRepository.findAll();
         //return repository.findAll();
-        return users;
+        return userRepository.findAll();
     }
 
     @PostMapping("/users")
@@ -69,7 +68,7 @@ class UserApiController {
         userRepository.deleteById(id);
     }
 
-    // 회원가입
+    //jwt 토큰 발급 방식의 회원가입 api
     @PostMapping("/join")
     public ResponseEntity join(@RequestBody UserDTO user) {
         Long result = userService.join(user);
@@ -78,7 +77,7 @@ class UserApiController {
                 ResponseEntity.badRequest().build();
     }
 
-    // 로그인
+    // jwt 토큰 발급 방식의 로그인 api
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserDTO user, HttpServletResponse response) {
         // 유저 존재 확인
