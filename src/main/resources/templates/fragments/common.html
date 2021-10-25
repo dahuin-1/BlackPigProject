@@ -64,11 +64,13 @@
                        th:href="@{/gallery}">이미지 모아보기</a>
                 </li>
 
-                <li class="nav-item">
+              <!--  <li class="nav-item">
                     <a class="nav-link" th:classappend="${menu} == 'personal'? 'active'" aria-current="page"
                        th:href="@{/personal}">회원정보인증</a>
+                </li>-->
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/personal}">회원정보인증</a>
                 </li>
-
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/account/login}">로그인</a>
                 </li>

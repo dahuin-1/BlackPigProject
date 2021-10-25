@@ -10,9 +10,10 @@
 </head>
 
 <body class="text-center">
+
 <form class="form-signin" th:action="@{/account/register}" method="post">
     <a th:href="@{/}">홈으로돌아가기</a>
-    <h1 class="h3 mb-3 fw-normal">회원가입</h1>
+    <h1 class="h3 mb-3 fw-normal">간편회원가입</h1>
     <div class="form-floating">
         <input type="text" id="username" name="username" class="form-control" placeholder="Username">
         <label for="username">Username</label>
@@ -23,43 +24,47 @@
     </div>
 
     <button class="w-100 btn btn-lg btn-primary" type="submit" th:onclick="welcome()">회원가입</button>
-
+    <p class="lead" >최초 가입시 회원 등급은 준회원입니다</p>
+    <p>[회원정보인증] 에서 구글 로그인을 통해 정보를 인증하세요. 정회원으로 등급이 조정됩니다!</p>
 </form>
+
+
 <footer th:replace="fragments/common :: footer"></footer>
 <script>
     function welcome() {
         alert("가입되었습니다. 로그인해주세요")
         $.ajax({});
     }
+
     function jwtjoin() {
         alert("가입되었습니다")
         const temp = $("#register").val();
         const data = $("#register").serializeArray();
         var datas = objToJson($("form[name=register]").serializeArray());
         //let sendData = "username="+$('input[username=username]').val()
-           // + "password="+$('input[password=password]').val();
+        // + "password="+$('input[password=password]').val();
         alert(temp)
         alert(data)
         alert(datas)
         $.ajax({
-                type: 'POST',
-                url: 'http://localhost:8080/account/register',
-                accept: "application/json",
-                //data: JSON.stringify(datas),
-                data:sendData,
-                dataType: 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
-                contentType: "application/json",
-                error: function (xhr, status, error) {
-                    alert(error);
-                },
-                success: function (token) {
-                    console.log(token);
-                    alert(this.data);
-                    //window.location.reload();
-                     var expireDay =  24 * 60 * 60 * 1000; //1일
-                     document.cookie = "X-AUTH-TOKEN=" + token + expireDay +"; path=/";
-                },
-            });
+            type: 'POST',
+            url: 'http://localhost:8080/account/register',
+            accept: "application/json",
+            //data: JSON.stringify(datas),
+            data: sendData,
+            dataType: 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
+            contentType: "application/json",
+            error: function (xhr, status, error) {
+                alert(error);
+            },
+            success: function (token) {
+                console.log(token);
+                alert(this.data);
+                //window.location.reload();
+                var expireDay = 24 * 60 * 60 * 1000; //1일
+                document.cookie = "X-AUTH-TOKEN=" + token + expireDay + "; path=/";
+            },
+        });
     }
 </script>
 </body>
