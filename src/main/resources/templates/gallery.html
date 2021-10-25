@@ -1,74 +1,89 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments/common :: head('삐슐랭가이드 : 사진')">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <meta name="theme-color" content="#7952b3">
-
-  <link href="carousel.css" th:href="@{/carousel.css}" rel="stylesheet">
-  <title>삐슐랭가이드</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <meta name="theme-color" content="#7952b3">-->
+    <link href="carousel.css" th:href="@{/carousel.css}" rel="stylesheet">
+    <title>삐슐랭가이드</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('gallery')"></nav>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+     th:replace="fragments/common :: menu('gallery')"></nav>
 
 <main role="main" class="container">
-  <div class="starter-template">
-    <h1>갤러리</h1>
-    <p class="lead">삐슐랭 가이드에 등재된 사진을 모아서 볼수 있습니다.</p>
-    <br>
-    <div id="gallery">
-      <div class="thumbs">
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-1_thumb.jpeg"
-             alt="1st image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-2_thumb.jpeg"
-             alt="2nd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_thumb.jpeg"
-             alt="3rd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-4_thumb.jpeg"
-             alt="4th image description"/>
-      <!--</div>
-      <br>
-      <div class="thumbs2">-->
+    <div class="starter-template">
+        <h1>갤러리</h1>
         <br>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-1_thumb.jpeg"
-             alt="1st image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-2_thumb.jpeg"
-             alt="2nd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-3_thumb.jpeg"
-             alt="3rd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-4_thumb.jpeg"
-             alt="4th image description"/>
+        <p class="lead"> 삐슐랭 가이드에 등재된 사진을 모아서 볼수 있습니다.</p>
+        <p class="lead"> 클릭하면 사진이 커집니다</p>
         <br>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-1_thumb.jpeg"
-             alt="1st image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-2_thumb.jpeg"
-             alt="2nd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-3_thumb.jpeg"
-             alt="3rd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-4_thumb.jpeg"
-             alt="4th image description"/>
+        <div id="gallery">
+            <div id="thumbnails">
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-1_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-1_large.jpeg')"
+                     alt="1st image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-2_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-2_large.jpeg')"
+                     alt="2nd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_large.jpeg')"
+                     alt="3rd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-4_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-4_large.jpeg')"
+                     alt="3rd image description"/>
+                <br>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-1_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-1_large.jpeg')"
+                     alt="1st image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-2_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-2_large.jpeg')"
+                     alt="2nd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-3_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-3_large.jpeg')"
+                     alt="3rd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-4_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-4_large.jpeg')"
+                     alt="4th image description"/>
+                <br>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-1_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-1_large.jpeg')"
+                     alt="1st image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-2_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-2_large.jpeg')"
+                     alt="2nd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-3_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-3_large.jpeg')"
+                     alt="3rd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-4_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-4_large.jpeg')"
+                     alt="4th image description"/>
+                <br>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-1_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-1_large.jpeg')"
+                     alt="1st image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_large.jpeg')"
+                     alt="2nd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-3_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-3_large.jpeg')"
+                     alt="3rd image description"/>
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-4_thumb.jpeg"
+                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-4_large.jpeg')"
+                     alt="4th image description"/>
+            </div>
+        </div>
         <br>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-1_thumb.jpeg"
-             alt="1st image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg"
-             alt="2nd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-3_thumb.jpeg"
-             alt="3rd image description"/>
-        <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-4_thumb.jpeg"
-             alt="4th image description"/>
-      </div>
     </div>
-
-
-    <br>
-
-  </div>
 </main>
 <footer th:replace="fragments/common :: footer">
-  <script th:inline="javascript">
-  </script>
+    <script th:inline="javascript">
+        function test() {
+            alert("click")
+        }
+    </script>
 </footer>
 </body>
 </html>
