@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/common :: head('삐슐랭가이드 : 회원정보인증')">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta name="theme-color" content="#7952b3">
+
+  <link href="carousel.css" th:href="@{/carousel.css}" rel="stylesheet">
+  <title>삐슐랭가이드</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('personalInfo')"></nav>
+
+<main role="main" class="container">
+  <div class="starter-template">
+    <h1>🐥</h1>
+    <p class="lead" >구글 로그인을 통한 정보 인증이 완료되었습니다 </p>
+    <p class="lead" >회원 등급 조정까지 시간이 소요될수 있습니다. </p>
+    <p class="lead" >정보 인증은 최초 한번만 부탁드립니다 </p>
+    <!--<a><img alt="" class="img-thumbnail" height="300" src="https://t1.daumcdn.net/cfile/blog/990E3F335E1182FB33"
+            width="300"></a>-->
+    <br>
+    <br>
+    <a th:href="@{/}">홈으로돌아가기</a>
+  </div>
+</main>
+<footer th:replace="fragments/common :: footer">
+  <script th:inline="javascript">
+  </script>
+</footer>
+</body>
+</html>

@@ -1,123 +1,22 @@
+
 <!doctype html>
-<html xmlns:layout="https://github.com/ultraq/thymeleaf-layout-dialect" layout:decorator="layout">
-<head>
-  <!-- Required meta tags -->
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/common :: head('삐슐랭가이드 : 사진')">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="/css/cover.css" rel="stylesheet">
+  <meta name="theme-color" content="#7952b3">
 
-  <title>삐슐랭가이드 : 로그인</title>
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .linkToWhite:hover{text-decoration:none}
-    .linkToWhite
-    {
-      color:white;
-      text-decoration: none;
-    }
-    .linkToBlack
-    {
-      color:black;
-      text-decoration: none;
-    }
-    .link{
-      text-decoration: none;
-      color:black;
-    }
-  </style>
+  <link href="carousel.css" th:href="@{/carousel.css}" rel="stylesheet">
+  <title>삐슐랭가이드</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand">삐슐랭가이드</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="bdNavbar">
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link" aria-current="page" href="/">지도</a></li>
-
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link" aria-current="page"
-             href="/board/information">정보</a></li>
-
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link" aria-current="page"
-             href="/board/list">후기</a></li>
-
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link" aria-current="page"
-             href="/board/ranking">인기글</a></li>
-
-      </ul>
-      <ul class="navbar-nav ms-md-auto">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page"
-             href="/gallery">이미지 모아보기</a>
-
-        </li>
-
-        <li class="nav-item">
-
-        </li>
-
-
-
-        <li class="nav-item">
-          <a class="nav-link">kim</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">[ROLE_USER]</a>
-        </li>
-        <form class="form-inline my-2 mr-2 my-lg-0" action="/logout" method="post">
-          <button class="btn btn-dark" type="submit">Logout</button>
-        </form>
-
-      </ul>
-
-      <!-- //변수처럼 사용하고 싶은 경우
-      <a th:href="@{'/users/'+ ${#authentication.principal.id}}">마이페이지</a>-->
-
-      <form class="d-flex" method="GET" action="/board/list">
-        <input class="form-control me-2" id="searchText" name="searchText" type="search" placeholder="Search"
-               aria-label="Search" value="">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-
-  </div>
-
-</nav>
-<div id="header">
-
-</div>
-
-<div id="leftNav">
-
-</div>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('select')"></nav>
 
 <main role="main" class="container">
   <div class="starter-template">
-    <!--<img th:src="@{/project-icon-large.png}" style="float:right;opacity:0.15;"/>-->
-    <div class="fs-2 mb-3">
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
-        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
-      </svg>
-    </div>
-    <div class="project-title">
-      삐슐랭가이드
-    </div>
 
-    <h1>로그인 해주세요</h1>
-    <br>
 
     <!--<form id="signin" th:action="@{/signin/authenticate}" method="post">
     <input type="hidden" name="_csrf" th:value="${_csrf.token}"></input>
