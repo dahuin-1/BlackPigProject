@@ -1,5 +1,7 @@
 package com.huineey.blackpigproject.controller;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.model.User;
 import com.huineey.blackpigproject.model.UserDTO;
@@ -8,14 +10,20 @@ import com.huineey.blackpigproject.service.UserService;
 import com.huineey.blackpigproject.token.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -80,18 +88,14 @@ class UserApiController {
     // jwt 토큰 발급 방식의 로그인 api
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserDTO user, HttpServletResponse response) {
-        // 유저 존재 확인
         User member = userService.findUser(user);
         boolean checkResult = userService.checkPassword(member, user);
-        // 비밀번호 체크
         if(!checkResult) {
             throw new IllegalArgumentException("아이디 혹은 비밀번호가 잘못되었습니다.");
         }
-        // 토큰 생성 및 응답
         String token = jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
         response.setHeader("authorization", "bearer " + token);
         return ResponseEntity.ok().body("로그인 성공!");
-
     }
 
     // 통합 예외 핸들러

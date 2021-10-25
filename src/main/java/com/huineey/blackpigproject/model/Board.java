@@ -30,10 +30,6 @@ public class Board {
         return getCountLike() > 0;
     }*/
 
-  /*  @NotNull
-    @Size(min=1, max=1, message = "스토어 아이디는 숫자로만 입력해주세요")
-    private Long store_id;*/
-
     @ManyToOne //게시글 입장에서는 매니 투 원
     @JoinColumn(name = "user_id")
     @JsonIgnore
