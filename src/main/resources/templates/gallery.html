@@ -18,72 +18,78 @@
         <h1>갤러리</h1>
         <br>
         <p class="lead"> 삐슐랭 가이드에 등재된 사진을 모아서 볼수 있습니다.</p>
-        <p class="lead"> 클릭하면 사진이 커집니다</p>
         <br>
         <div id="gallery">
-            <div id="thumbnails">
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-1_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-1_large.jpeg')"
-                     alt="1st image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-2_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-2_large.jpeg')"
-                     alt="2nd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_large.jpeg')"
-                     alt="3rd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-4_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-4_large.jpeg')"
-                     alt="3rd image description"/>
+            <div id="panel">
+                <img id="largeImage" src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_large.jpeg" width="550" height="550" />
                 <br>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-1_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-1_large.jpeg')"
-                     alt="1st image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-2_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-2_large.jpeg')"
-                     alt="2nd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-3_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-3_large.jpeg')"
-                     alt="3rd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-4_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-4_large.jpeg')"
-                     alt="4th image description"/>
+                <div id="description">아래에서 궁금한 사진을 클릭해보세요</div>
                 <br>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-1_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-1_large.jpeg')"
-                     alt="1st image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-2_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-2_large.jpeg')"
-                     alt="2nd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-3_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-3_large.jpeg')"
-                     alt="3rd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-4_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-4_large.jpeg')"
-                     alt="4th image description"/>
-                <br>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-1_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-1_large.jpeg')"
-                     alt="1st image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_large.jpeg')"
-                     alt="2nd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-3_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-3_large.jpeg')"
-                     alt="3rd image description"/>
-                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-4_thumb.jpeg"
-                     onclick="window.open('https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-4_large.jpeg')"
-                     alt="4th image description"/>
+            </div>
+            <div id="thumbs">
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-1_thumb.jpeg" width="200" height="200"
+                     alt="정식당" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-2_thumb.jpeg" width="200" height="200"
+                     alt="정식당" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-3_thumb.jpeg" width="200" height="200"
+                     alt="정식당" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_1-4_thumb.jpeg" width="200" height="200"
+                     alt="정식당" />
+
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-1_thumb.jpeg" width="200" height="200"
+                     alt="모퉁이우" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-2_thumb.jpeg" width="200" height="200"
+                     alt="모퉁이우" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-3_thumb.jpeg" width="200" height="200"
+                     alt="모퉁이우" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-4_thumb.jpeg" width="200" height="200"
+                     alt="모퉁이우" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_2-5_thumb.jpeg" width="200" height="200"
+                     alt="모퉁이우" />
+
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-1_thumb.jpeg" width="200" height="200"
+                     alt="주옥" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-2_thumb.jpeg" width="200" height="200"
+                     alt="주옥" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-3_thumb.jpeg" width="200" height="200"
+                     alt="주옥" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_3-4_thumb.jpeg" width="200" height="200"
+                     alt="주옥" />
+
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-1_thumb.jpeg" width="200" height="200"
+                     alt="청담우월" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg" width="200" height="200"
+                     alt="청담우월" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-3_thumb.jpeg" width="200" height="200"
+                     alt="청담우월" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-4_thumb.jpeg" width="200" height="200"
+                     alt="청담우월" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-5_thumb.jpeg" width="200" height="200"
+                     alt="청담우월" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-6_thumb.jpeg" width="200" height="200"
+                     alt="청담우월" />
+
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_5-1_thumb.jpeg" width="200" height="200"
+                     alt="몽중헌-추후 삐슐랭 업데이트 예정입니다" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_6-1_thumb.jpeg" width="200" height="200"
+                     alt="유키즈시-추후 삐슐랭 업데이트 예정입니다" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_7-1_thumb.jpeg" width="200" height="200"
+                     alt="옥동식-추후 삐슐랭 업데이트 예정입니다" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_8-1_thumb.jpeg" width="200" height="200"
+                     alt="청담물항-추후 삐슐랭 업데이트 예정입니다" />
+                <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_10-1_thumb.jpeg" width="200" height="200"
+                     alt="꽃 빕에 피다-추후 삐슐랭 업데이트 예정입니다" />
             </div>
         </div>
         <br>
     </div>
 </main>
-<footer th:replace="fragments/common :: footer">
+<footer th:replace="fragments/common :: footer"></footer>
     <script th:inline="javascript">
-        function test() {
-            alert("click")
-        }
+        $('#thumbs img').click(function(){
+            $('#largeImage').attr('src',$(this).attr('src').replace('thumb','large'));
+            $('#description').html($(this).attr('alt'));
+        });
     </script>
-</footer>
 </body>
 </html>
