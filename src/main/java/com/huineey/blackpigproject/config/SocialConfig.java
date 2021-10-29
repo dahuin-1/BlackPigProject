@@ -16,10 +16,10 @@ public class SocialConfig {
 
     @Bean
     public OAuth2Parameters auth2Parameters(){
-        OAuth2Parameters googleauth2Parameter = new OAuth2Parameters();
-        googleauth2Parameter.setRedirectUri("http://localhost:8080/google/callback");
-        googleauth2Parameter.setScope("https://www.googleapis.com/auth/plus.login");
-        return googleauth2Parameter;
+        OAuth2Parameters googleAuth2Parameter = new OAuth2Parameters();
+        googleAuth2Parameter.setRedirectUri("http://localhost:8080/google/callback");
+        googleAuth2Parameter.setScope("https://www.googleapis.com/auth/plus.login");
+        return googleAuth2Parameter;
     }
 
 }
