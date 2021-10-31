@@ -23,6 +23,14 @@
             <input type="radio" name="store" value="3" id="3" th:field="*{store}">주옥 &nbsp;
             <input type="radio" name="store" value="4" id="4" th:field="*{store}">청담우월
         </div>
+            <div class="star-group">
+                <label>[별점을 선택해주세요]</label><br>
+                <input type="radio" name="star" value="⭐" id="star1" th:field="*{rating}">⭐
+                <input type="radio" name="star" value="⭐⭐" id="star2" th:field="*{rating}">⭐⭐
+                <input type="radio" name="star" value="⭐⭐⭐" id="star3" th:field="*{rating}">⭐⭐⭐
+                <input type="radio" name="star" value="⭐⭐⭐⭐" id="star4" th:field="*{rating}">⭐⭐⭐⭐
+                <input type="radio" name="star" value="⭐⭐⭐⭐⭐" id="star5" th:field="*{rating}">⭐⭐⭐⭐⭐
+            </div>
         <br>
         <div class="form-group">
             <label for="title">[제목]</label>

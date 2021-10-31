@@ -15,14 +15,22 @@
     <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
         <input type="hidden" th:field="*{id}"> <!--키값(id)전달-->
         <br>
-        <div id="result"></div>
         <div class="form-group">
-            <label>[리뷰를 작성하고 싶은 식당을 선택해주세요]</label><br>
+            <label>[식당 이름]</label><br>
             <input readonly type="radio" name="store" value="1" id="1" th:field="*{store}">정식당 &nbsp;
             <input readonly type="radio" name="store" value="2" id="2" th:field="*{store}">모퉁이우 &nbsp;
             <input readonly type="radio" name="store" value="3" id="3" th:field="*{store}">주옥 &nbsp;
             <input readonly type="radio" name="store" value="5" id="4" th:field="*{store}">청담우월
         </div>
+        <div class="star-group">
+            <label>[별점 정보]</label><br>
+            <input readonly type="radio" name="star" value="⭐" id="star1" th:field="*{rating}">⭐ &nbsp;
+            <input readonly type="radio" name="star" value="⭐⭐" id="star2" th:field="*{rating}">⭐⭐ &nbsp;
+            <input readonly type="radio" name="star" value="⭐⭐⭐" id="star3" th:field="*{rating}">⭐⭐⭐ &nbsp;
+            <input readonly type="radio" name="star" value="⭐⭐⭐⭐" id="star4" th:field="*{rating}">⭐⭐⭐⭐ &nbsp;
+            <input readonly type="radio" name="star" value="⭐⭐⭐⭐⭐" id="star5" th:field="*{rating}">⭐⭐⭐⭐⭐ &nbsp;
+        </div>
+
         <br>
         <div class="form-group">
             <label for="title">[제목]</label>
