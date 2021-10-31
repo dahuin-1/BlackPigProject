@@ -58,7 +58,7 @@ public class AccountController {
         return "redirect:/";
     }
 
-    // jwt토큰 발급 회원가입용 컨트롤러 + js 연결실패, 추후 연결 예정
+    // jwt토큰 발급 회원가입용 컨트롤러 + String -> json
     /*@PostMapping("/register")
     public String join(@RequestBody UserDTO user) {
         Long userId = userService.join(user);

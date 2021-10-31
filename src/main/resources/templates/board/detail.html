@@ -24,6 +24,7 @@
             <h1 th:text="*{name}">삐슐랭가이드</h1>
             <p class="lead" th:text="*{address}">hello, world</p>
             <br>
+            <p> 메뉴 정보는 곧 추가될 예정입니다. </p>
         </div>
         <!--<div id="gallery">
             <div id="panel">
@@ -42,12 +43,7 @@
             <img src="https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_04_thumb.jpeg"
                  alt="4th image description"/>
         </div>-->
-        <div id="gallery">
-            <div id="panel">
-                <img id="logo" src="">
-                <script>document.getElementById('logo').src = logo_info()</script>
-            </div>
-        </div>
+
         <br>
         <div class="store_info">
             <p>
@@ -97,30 +93,6 @@
 </main>
 <footer th:replace="fragments/common :: footer">
     <script language="JavaScript">
-        //"https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg"
-        function logo_info() {
-            let img_src;
-            let area;
-            for (let i = 0; i <= 4; i++) {
-                if(area === i) {
-                    img_src = 'https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_' + i + '-1_thumb.jpeg';
-                    //img_src = "https://ppi-pic.s3.ap-northeast-2.amazonaws.com/image_4-2_thumb.jpeg";
-                }
-            }
-            return img_src;
-        }
-
-        /* function title_info() {
-             var user_area = <%=user.area%>;
-         var img_src;
-         for(var i=1; i
-             <=17; i++) {
-                 if (user_area == i) {
-                     img_src = '../public/img/' + i + '_title.png';
-                 }
-             }
-             return img_src;
-         }*/
 
     </script>
 </footer>

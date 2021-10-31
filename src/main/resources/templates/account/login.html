@@ -15,10 +15,10 @@
   <a th:href="@{/}">홈으로돌아가기</a>
   <h1 class="h3 mb-3 fw-normal">로그인 해주세요</h1>
   <div class="alert alert-danger" role="alert" th:if="${param.error}">
-    Invalid username and password.
+    올바르지 않은 회원정보입니다.
   </div>
   <div class="alert alert-primary" role="alert" th:if="${param.logout}">
-    You have been logged out.
+    로그아웃 되었습니다.
   </div>
   <div class="form-floating">
     <input type="text" id="username" name="username" class="form-control" placeholder="Username">
