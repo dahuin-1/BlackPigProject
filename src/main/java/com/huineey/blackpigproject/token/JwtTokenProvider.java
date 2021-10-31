@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -23,9 +24,8 @@ import java.util.List;
 @Component
 public class JwtTokenProvider {
 
-    private final CustomUserDetailService customUserDetailService;
-
     private String secretKey = "secretKey-test-authorization-jwt-manage-token";
+    //private Key key;
 
     private long tokenValidTime = 30 * 60 * 1000L;
 
@@ -35,7 +35,20 @@ public class JwtTokenProvider {
     }
 
     // JWT Token 생성.
-    public String createToken(String user, List<Role> roles){
+    public String createToken(String user){
+        Claims claims = Jwts.claims().setSubject(user);
+        //claims.put("roles", roles);
+        Date date = new Date();
+        return Jwts.builder()
+                .setClaims(claims) // 발행 유저 정보
+                .setIssuedAt(date) // 발행 시간
+                .setExpiration(new Date(date.getTime() + tokenValidTime)) // 토큰 유효 시간
+                .signWith(SignatureAlgorithm.HS256, secretKey) // 해싱 알고리즘 및 키
+                //.signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+   /* public String createToken(String user, List<Role> roles){
         Claims claims = Jwts.claims().setSubject(user);
         claims.put("roles", roles);
         Date date = new Date();
@@ -45,7 +58,7 @@ public class JwtTokenProvider {
                 .setExpiration(new Date(date.getTime() + tokenValidTime)) // 토큰 유효 시간
                 .signWith(SignatureAlgorithm.HS256, secretKey) // 해싱 알고리즘 및 키
                 .compact();
-    }
+    }*/
 
     // JWT 토큰에서 인증 정보 조회
   /*  public Authentication getAuthentication(String token) {

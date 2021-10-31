@@ -1,6 +1,6 @@
 package com.huineey.blackpigproject.token;
 
-/*api만 만들어둔 상태라서 주석 처리. 웹에서 api 호출이 정상적으로 이뤄지면 주석 해제 예정
+//api만 만들어둔 상태라서 주석 처리. 웹에서 api 호출이 정상적으로 이뤄지면 주석 해제 예정
 /*import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

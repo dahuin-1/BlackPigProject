@@ -86,7 +86,7 @@ class UserApiController {
     }
 
     // jwt 토큰 발급 방식의 로그인 api
-    @PostMapping("/login")
+   /* @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserDTO user, HttpServletResponse response) {
         User member = userService.findUser(user);
         boolean checkResult = userService.checkPassword(member, user);
@@ -96,7 +96,21 @@ class UserApiController {
         String token = jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
         response.setHeader("authorization", "bearer " + token);
         return ResponseEntity.ok().body("로그인 성공!");
+    }*/
+
+    // jwt 토큰 발급 방식의 로그인 api
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody UserDTO user, HttpServletResponse response) {
+        User member = userService.findUser(user);
+        boolean checkResult = userService.checkPassword(member, user);
+        if(!checkResult) {
+            throw new IllegalArgumentException("아이디 혹은 비밀번호가 잘못되었습니다.");
+        }
+        String token = jwtTokenProvider.createToken(member.getUsername());
+        response.setHeader("authorization", "bearer " + token);
+        return ResponseEntity.ok().body("로그인 성공!");
     }
+
 
     // 통합 예외 핸들러
     @ExceptionHandler
