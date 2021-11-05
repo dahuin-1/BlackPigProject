@@ -14,8 +14,8 @@
     <h2>후기</h2>
     <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
         <input type="hidden" th:field="*{id}"> <!--키값(id)전달-->
-        <br>
-        <div class="form-group">
+        <br><br>
+        <!--<div class="form-group">
             <label>[식당 이름]</label><br>
             <input readonly type="radio" name="store" value="1" id="1" th:field="*{store}">정식당 &nbsp;
             <input readonly type="radio" name="store" value="2" id="2" th:field="*{store}">모퉁이우 &nbsp;
@@ -29,11 +29,19 @@
             <input readonly type="radio" name="star" value="⭐⭐⭐" id="star3" th:field="*{rating}">⭐⭐⭐ &nbsp;
             <input readonly type="radio" name="star" value="⭐⭐⭐⭐" id="star4" th:field="*{rating}">⭐⭐⭐⭐ &nbsp;
             <input readonly type="radio" name="star" value="⭐⭐⭐⭐⭐" id="star5" th:field="*{rating}">⭐⭐⭐⭐⭐ &nbsp;
-        </div>
+        </div>-->
+        <br>
+        <div class="center">
+       <!-- <label>[식당 정보]</label><br>-->
+        <p class="lead" th:text="${board.store.name}">식당이름</p>
 
+       <!-- <label>[별점]</label><br>-->
+        <p class="lead" th:text="${board.rating}">별점</p>
+        </div>
         <br>
         <div class="form-group">
-            <label for="title">[제목]</label>
+
+            <strong><label for="title">[한줄평가]</label></strong>
             <input readonly type="text" class="form-control"
                    th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
@@ -42,7 +50,7 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="content">[내용]</label>
+            <strong><label for="content">[내용]</label></strong>
             <textarea readonly class="form-control" id="content" rows="15" th:field="*{content}"
                       th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'"> </textarea>
             <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
