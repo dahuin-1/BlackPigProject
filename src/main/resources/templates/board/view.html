@@ -92,11 +92,11 @@
                     <div class="p-2 flex-grow-1 bd-highlight">
                         <div class="card-body">
                             <strong th:text="${comments.user.username}"></strong><br/>
+                            <a style="color: darkgray" th:text="${#temporals.format(comments.datetime, 'yyyy-MM-dd HH:mm')}"></a><br>
                             <a style="text-decoration: none" th:text="${comments.text}"></a></div>
                     </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
-                        <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comments.id})|">삭제
-                        </button>
+                        <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comments.id})|">삭제</button>
                     </div>
                 </div>
             </div>

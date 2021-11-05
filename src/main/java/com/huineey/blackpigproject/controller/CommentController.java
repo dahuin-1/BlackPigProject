@@ -12,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,6 +50,8 @@ public class CommentController {
         newComment.setBoard(board);
         newComment.setText(comment);
         newComment.setUser(user);
+        newComment.setDatetime(LocalDateTime.now());
+        //newComment.setDatetime(currentTime);
         return commentRepository.save(newComment);
     }
 
