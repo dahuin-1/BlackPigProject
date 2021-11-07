@@ -68,7 +68,6 @@
     <br/>
     <div class="comment">
         <div id="comment_form" th:object="${board}" method="post">
-
             <input id="board_id" type="hidden" th:value="*{id}">
             <label for="content"> [댓글] </label>
             <textarea class="form-control" name="comment" id="comment" placeholder="댓글을 남겨주세요"></textarea><br>
@@ -80,25 +79,31 @@
         </div>
 
         <br>
-        <th:block th:each="comments : ${comments}"> <!--이거 그 모델 컨트롤러에서 준 코멘츠-->
+        <th:block th:each="comment : ${comments}"> <!--이거 그 모델 컨트롤러에서 준 코멘츠-->
             <div class="card">
                 <div class="d-flex bd-highlight">
                     <div class="p-2 flex-grow-1 bd-highlight">
                         <div class="card-body">
-                            <strong th:text="${comments.user.username}"></strong><br/>
+                            <strong th:text="${comment.user.username}"></strong><br/>
                             <a style="color: darkgray"
-                               th:text="${#temporals.format(comments.datetime, 'yyyy-MM-dd HH:mm')}"></a><br>
-                            <a style="text-decoration: none" th:text="${comments.text}"></a></div>
+                               th:text="${#temporals.format(comment.datetime, 'yyyy-MM-dd HH:mm')}"></a><br>
+                            <a style="text-decoration: none" th:text="${comment.text}"></a></div>
                     </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
-                        <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comments.id})|">삭제
-                        </button>
-                        <button type="button" class="btn btn-dark" th:onclick="|replaceComment(${comments.id})|" th:>수정
-                        </button>
-                        <!--th:onclick="|replaceComment(${comments.id})-->
+                        <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comment.id})|">삭제</button>
+                       <button type="button" class="btn btn-dark" th:onclick="|editComment(${comment.id})|">수정</button>
                     </div>
                 </div>
             </div>
+            <form type=hidden id="edit_comment_form">
+                <label for="content"> </label>
+                <textarea class="form-control" name="comment" id="editComment" th:text="${comment.text}"></textarea><br>
+                <div class="d-flex flex-row-reverse bd-highlight">
+                   <!-- <button id="edit_comment_btn" type="button" class="btn btn-dark"
+                            th:onclick="|editComment(*{comment.id})|">작성</button>-->
+                    <button type="button" class="btn btn-dark" th:onclick="|editComment(${comment.id})|">수정</button>
+                </div>
+            </form>
         </th:block>
         <br>
         <br>
@@ -121,7 +126,6 @@
                 window.location.reload();
             }
         });
-        return comment
     }
 
     function deleteComment(id) {
@@ -136,18 +140,18 @@
         });
     }
 
-    function replaceComment(id) {
-        const comment =  writeComment(id).text()
+    function editComment(id) {
+        alert(id);
+        const comment = $("#editComment").val();
+        alert(comment);
         $.ajax({
-            url: '/api/comments/' + id,
+            url: '/api/comment/' + id,
             type: 'PUT',
             data: {
                 comment
             },
             success: function (result) {
                 console.log('result', result);
-                console.log(comment)
-                alert("수정되었습니다");
                 window.location.reload();
             }
         });

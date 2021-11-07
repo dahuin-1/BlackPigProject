@@ -42,7 +42,6 @@ public class CommentApiController {
 
     @PostMapping("/comments/{id}")
     Comment CreateComment(@RequestParam String comment, @PathVariable Long id, Authentication authentication) {
-        //validation
         Board board = boardRepository.findOneById(id);
         String username = authentication.getName();
         User user = userRepository.findByUsername(username).orElse(null);
@@ -51,7 +50,6 @@ public class CommentApiController {
         newComment.setText(comment);
         newComment.setUser(user);
         newComment.setDatetime(LocalDateTime.now());
-        //newComment.setDatetime(currentTime);
         return commentRepository.save(newComment);
     }
 
@@ -63,17 +61,32 @@ public class CommentApiController {
         commentRepository.deleteById(id);
     }
 
-    @PutMapping("/comments/{id}")
+  /*  @PutMapping("/comments/{id}")
     Comment replaceComment(@RequestBody Comment newComment, @PathVariable Long id) {
         return commentRepository.findById(id)
-                .map(comment -> {
+            .map(comment -> {
                     comment.setText(newComment.getText());
-                  //  comment.setDatetime(newComment.getDatetime());
+                    comment.setDatetime(newComment.getDatetime());
                     return commentRepository.save(comment);
                 })
                 .orElseGet(() -> {
                     newComment.setId(id);
                     return commentRepository.save(newComment);
                 });
+    } */
+
+
+    @PostMapping("/comment/{id}")
+    Comment replaceComment(@RequestParam String newComment, @PathVariable Long id, Authentication authentication) {
+        Comment comment = commentRepository.findById(id).orElse(null);
+        Board board = commentRepository.findBoardById(id);
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username).orElse(null);
+        comment.setBoard(board);
+        comment.setText(newComment);
+        comment.setUser(user);
+        comment.setDatetime(LocalDateTime.now());
+        return commentRepository.save(comment);
     }
+
 }
