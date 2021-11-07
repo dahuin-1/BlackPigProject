@@ -76,7 +76,7 @@ public class CommentApiController {
     } */
 
 
-    @PostMapping("/comment/{id}")
+    @PutMapping("/comment/{id}")
     Comment replaceComment(@RequestParam String newComment, @PathVariable Long id, Authentication authentication) {
         Comment comment = commentRepository.findById(id).orElse(null);
         Board board = commentRepository.findBoardById(id);
