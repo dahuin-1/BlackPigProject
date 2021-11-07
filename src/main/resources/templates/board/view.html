@@ -93,6 +93,9 @@
                     <div class="p-2 flex-shrink-1 bd-highlight">
                         <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comments.id})|">삭제
                         </button>
+                        <button type="button" class="btn btn-dark" th:onclick="|replaceComment(${comments.id})|" th:>수정
+                        </button>
+                        <!--th:onclick="|replaceComment(${comments.id})-->
                     </div>
                 </div>
             </div>
@@ -118,6 +121,7 @@
                 window.location.reload();
             }
         });
+        return comment
     }
 
     function deleteComment(id) {
@@ -127,6 +131,23 @@
             success: function (result) {
                 console.log('result', result);
                 alert("삭제되었습니다");
+                window.location.reload();
+            }
+        });
+    }
+
+    function replaceComment(id) {
+        const comment =  writeComment(id).text()
+        $.ajax({
+            url: '/api/comments/' + id,
+            type: 'PUT',
+            data: {
+                comment
+            },
+            success: function (result) {
+                console.log('result', result);
+                console.log(comment)
+                alert("수정되었습니다");
                 window.location.reload();
             }
         });

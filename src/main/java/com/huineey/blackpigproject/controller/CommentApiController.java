@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class CommentController {
+public class CommentApiController {
 
     @Autowired
     BoardRepository boardRepository;
@@ -61,5 +61,19 @@ public class CommentController {
         User user = userRepository.findByUsername(username).orElse(null);
         commentRepository.findCommentByUser(user);
         commentRepository.deleteById(id);
+    }
+
+    @PutMapping("/comments/{id}")
+    Comment replaceComment(@RequestBody Comment newComment, @PathVariable Long id) {
+        return commentRepository.findById(id)
+                .map(comment -> {
+                    comment.setText(newComment.getText());
+                  //  comment.setDatetime(newComment.getDatetime());
+                    return commentRepository.save(comment);
+                })
+                .orElseGet(() -> {
+                    newComment.setId(id);
+                    return commentRepository.save(newComment);
+                });
     }
 }
