@@ -40,5 +40,8 @@ public class Board {
     @JsonIgnore
     private Store store;
 
+  /*  @Formuala("(select count(1) from comment c where c.board_id = id)")
+    private int totalCommentCount;*/
+
 
 }

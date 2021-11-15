@@ -91,7 +91,7 @@
                     </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
                         <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comment.id})|">삭제</button>
-                       <button type="button" class="btn btn-dark" th:onclick="|editComment(${comment.id})|">수정</button>
+                        <button type="button" class="btn btn-dark" th:onclick="|editComment(${comment.id})|">수정</button>
                     </div>
                 </div>
             </div>
@@ -99,9 +99,7 @@
                 <label for="content"> </label>
                 <textarea class="form-control" name="comment" id="editComment" th:text="${comment.text}"></textarea><br>
                 <div class="d-flex flex-row-reverse bd-highlight">
-                   <!-- <button id="edit_comment_btn" type="button" class="btn btn-dark"
-                            th:onclick="|editComment(*{comment.id})|">작성</button>-->
-                    <button type="button" class="btn btn-dark" th:onclick="|editComment(${comment.id})|">수정</button>
+
                 </div>
             </form>
         </th:block>
@@ -128,21 +126,11 @@
         });
     }
 
-    function deleteComment(id) {
-        $.ajax({
-            url: '/api/comments/' + id,
-            type: 'DELETE',
-            success: function (result) {
-                console.log('result', result);
-                alert("삭제되었습니다");
-                window.location.reload();
-            }
-        });
-    }
-
     function editComment(id) {
         alert(id);
         const comment = $("#editComment").val();
+        const cmtid = comment.id;
+        alert(cmtid);
         alert(comment);
         $.ajax({
             url: '/api/comment/' + id,
@@ -156,6 +144,19 @@
             }
         });
     }
+
+    function deleteComment(id) {
+        $.ajax({
+            url: '/api/comments/' + id,
+            type: 'DELETE',
+            success: function (result) {
+                console.log('result', result);
+                alert("삭제되었습니다");
+                window.location.reload();
+            }
+        });
+    }
+
 
     function deleteBoard(id) {
         $.ajax({
