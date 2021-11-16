@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -54,36 +53,42 @@ public class CommentApiController {
     }
 
     @DeleteMapping("/comments/{id}")
-    void deleteComment(@PathVariable Long id,Authentication authentication) {
+    void deleteComment(@PathVariable Long id, Authentication authentication) {
         String username = authentication.getName();
         User user = userRepository.findByUsername(username).orElse(null);
         commentRepository.findCommentByUser(user);
         commentRepository.deleteById(id);
     }
 
-  /*  @PutMapping("/comments/{id}")
-    Comment replaceComment(@RequestBody Comment newComment, @PathVariable Long id) {
-        return commentRepository.findById(id)
-            .map(comment -> {
-                    comment.setText(newComment.getText());
-                    comment.setDatetime(newComment.getDatetime());
-                    return commentRepository.save(comment);
-                })
-                .orElseGet(() -> {
-                    newComment.setId(id);
-                    return commentRepository.save(newComment);
-                });
-    } */
+    /*  @PutMapping("/comments/{id}")
+      Comment replaceComment(@RequestBody Comment newComment, @PathVariable Long id) {
+          return commentRepository.findById(id)
+              .map(comment -> {
+                      comment.setText(newComment.getText());
+                      comment.setDatetime(newComment.getDatetime());
+                      return commentRepository.save(comment);
+                  })
+                  .orElseGet(() -> {
+                      newComment.setId(id);
+                      return commentRepository.save(newComment);
+                  });
+      } */
+    @GetMapping("/comments/{id}")
+    Comment one(@PathVariable Long id) {
+        System.out.println("here");
+        System.out.println(commentRepository.findById(id));
+        return commentRepository.findOneById(id);
+    }
 
-
-    @PutMapping("/comment/{id}")
-    Comment replaceComment(@RequestParam String newComment, @PathVariable Long id, Authentication authentication) {
-        Comment comment = commentRepository.findById(id).orElse(null);
-        Board board = commentRepository.findBoardById(id);
+    @PutMapping("/comments/{id}")
+    Comment replaceComment(@RequestParam String newCommentText, @PathVariable Long id, Authentication authentication) {
+        Comment comment = commentRepository.findOneById(id);
+        Board board = boardRepository.findOneById(id);
         String username = authentication.getName();
         User user = userRepository.findByUsername(username).orElse(null);
-        comment.setBoard(board);
-        comment.setText(newComment);
+        Comment newComment = new Comment();
+        newComment.setBoard(board);
+        comment.setText(newCommentText);
         comment.setUser(user);
         comment.setDatetime(LocalDateTime.now());
         return commentRepository.save(comment);

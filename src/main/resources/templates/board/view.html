@@ -87,11 +87,12 @@
                             <strong th:text="${comment.user.username}"></strong><br/>
                             <a style="color: darkgray"
                                th:text="${#temporals.format(comment.datetime, 'yyyy-MM-dd HH:mm')}"></a><br>
-                            <a style="text-decoration: none" th:text="${comment.text}"></a></div>
+                            <a style="text-decoration: none" th:text="${comment.text}"></a>
+                        </div>
                     </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
                         <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comment.id})|">삭제</button>
-                        <button type="button" class="btn btn-dark" th:onclick="|editComment(${comment.id})|">수정</button>
+                        <button type="button" class="btn btn-dark" th:onclick="|showtext(${comment.id})|">수정</button>
                     </div>
                 </div>
             </div>
@@ -126,11 +127,28 @@
         });
     }
 
+    function showtext(id) {
+        alert(id);
+        $.ajax({
+            url: '/api/comment/' + id,
+            type: 'GET',
+            data: {
+                result
+            },
+            success: function (result) {
+                alert(result)
+                console.log('result', result);
+                window.location.reload();
+            }
+        });
+       // var showarea = document.getElementById(text);
+       // var showarea = document.getElementById("userdata");
+       // showarea.innerHTML = text.value;
+    }
+
     function editComment(id) {
         alert(id);
         const comment = $("#editComment").val();
-        const cmtid = comment.id;
-        alert(cmtid);
         alert(comment);
         $.ajax({
             url: '/api/comment/' + id,
