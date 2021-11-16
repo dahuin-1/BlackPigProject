@@ -82,7 +82,7 @@
         <th:block th:each="comment : ${comments}"> <!--이거 그 모델 컨트롤러에서 준 코멘츠-->
             <div class="card">
                 <div class="d-flex bd-highlight">
-                    <div class="p-2 flex-grow-1 bd-highlight">
+                    <div class="p-2 flex-grow-1 bd-highlight" id="commentForm" style="display: block">
                         <div class="card-body">
                             <strong th:text="${comment.user.username}"></strong><br/>
                             <a style="color: darkgray"
@@ -90,19 +90,28 @@
                             <a style="text-decoration: none" th:text="${comment.text}"></a>
                         </div>
                     </div>
+                   <div class="p-2 flex-grow-1 bd-highlight" id="editForm" style="display: none">
+                        <div class="edit-form">
+                            <strong th:text="${comment.user.username}"></strong><br/>
+                            <a style="color: darkgray"
+                               th:text="${#temporals.format(comment.datetime, 'yyyy-MM-dd HH:mm')}"></a><br>
+                            <textarea class="form-control" name="editComment" id="editComment" th:text="${comment.text}" ></textarea>
+                        </div>
+                   </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
                         <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comment.id})|">삭제</button>
-                        <button type="button" class="btn btn-dark" th:onclick="|showtext(${comment.id})|">수정</button>
+                       <!-- <button type="button" id="edit" class="btn btn-dark">수정</button> -->
+                        <button type="button" class="btn btn-dark" th:onclick="|myFunction(${comment.id})|">수정</button>
                     </div>
                 </div>
             </div>
-            <form type=hidden id="edit_comment_form">
+           <!-- th:onclick="|myFunction(${comment.id})|"
+           <form type=hidden id="edit_comment_form">
                 <label for="content"> </label>
                 <textarea class="form-control" name="comment" id="editComment" th:text="${comment.text}"></textarea><br>
                 <div class="d-flex flex-row-reverse bd-highlight">
-
                 </div>
-            </form>
+            </form>-->
         </th:block>
         <br>
         <br>
@@ -111,6 +120,35 @@
 
 <footer th:replace="fragments/common :: footer"></footer>
 <script th:inline="javascript">
+
+    $('#edit').click(function(){
+        alert("here")
+        $('#commentForm').attr('style',$(this).attr('style').replace('display: none','display: block'));
+       // $('#description').html($(this).attr('alt'));
+    });
+
+    function myFunction(id) {
+        alert("here");
+        alert(id)
+        $.ajax({
+            url: '/api/comments/' + id,
+            type: 'GET',
+            data: {
+                comment
+            },
+            success: function (result) {
+                console.log('result', result);
+                //window.location.reload();
+            }
+        });
+        //const x = document.getElementById("editForm");
+        const x = comment;
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
 
     function writeComment(id) {
         const comment = $("#comment").val();
@@ -127,24 +165,6 @@
         });
     }
 
-    function showtext(id) {
-        alert(id);
-        $.ajax({
-            url: '/api/comment/' + id,
-            type: 'GET',
-            data: {
-                result
-            },
-            success: function (result) {
-                alert(result)
-                console.log('result', result);
-                window.location.reload();
-            }
-        });
-       // var showarea = document.getElementById(text);
-       // var showarea = document.getElementById("userdata");
-       // showarea.innerHTML = text.value;
-    }
 
     function editComment(id) {
         alert(id);

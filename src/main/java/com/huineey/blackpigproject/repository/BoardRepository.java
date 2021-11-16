@@ -1,7 +1,6 @@
 package com.huineey.blackpigproject.repository;
 
 import com.huineey.blackpigproject.model.Board;
-import com.huineey.blackpigproject.model.Store;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

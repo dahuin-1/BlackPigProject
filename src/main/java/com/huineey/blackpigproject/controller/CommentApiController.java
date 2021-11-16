@@ -6,7 +6,9 @@ import com.huineey.blackpigproject.model.User;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import com.huineey.blackpigproject.repository.CommentRepository;
 import com.huineey.blackpigproject.repository.UserRepository;
+import com.huineey.blackpigproject.service.BoardService;
 import com.huineey.blackpigproject.service.CommentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +33,9 @@ public class CommentApiController {
     @Autowired
     CommentService commentService;
 
+    @Autowired
+    BoardService boardService;
+
     @GetMapping("/comments")
     public List<Comment> all(@RequestParam(required = false, defaultValue = "") String text) {
         if (StringUtils.isEmpty(text)) {
@@ -53,37 +58,21 @@ public class CommentApiController {
     }
 
     @DeleteMapping("/comments/{id}")
-    void deleteComment(@PathVariable Long id, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElse(null);
-        commentRepository.findCommentByUser(user);
+    void deleteComment(@PathVariable Long id) {
         commentRepository.deleteById(id);
     }
 
-    /*  @PutMapping("/comments/{id}")
-      Comment replaceComment(@RequestBody Comment newComment, @PathVariable Long id) {
-          return commentRepository.findById(id)
-              .map(comment -> {
-                      comment.setText(newComment.getText());
-                      comment.setDatetime(newComment.getDatetime());
-                      return commentRepository.save(comment);
-                  })
-                  .orElseGet(() -> {
-                      newComment.setId(id);
-                      return commentRepository.save(newComment);
-                  });
-      } */
     @GetMapping("/comments/{id}")
     Comment one(@PathVariable Long id) {
-        System.out.println("here");
-        System.out.println(commentRepository.findById(id));
         return commentRepository.findOneById(id);
+      //  return commentRepository.findById(id).orElse(null);
     }
 
     @PutMapping("/comments/{id}")
     Comment replaceComment(@RequestParam String newCommentText, @PathVariable Long id, Authentication authentication) {
-        Comment comment = commentRepository.findOneById(id);
-        Board board = boardRepository.findOneById(id);
+        Comment comment = commentRepository.findById(id).orElse(null);
+        Board board = boardService.getBoardByComment(id);
+       // Board board = commentRepository.findOneById(id).getBoard();
         String username = authentication.getName();
         User user = userRepository.findByUsername(username).orElse(null);
         Comment newComment = new Comment();

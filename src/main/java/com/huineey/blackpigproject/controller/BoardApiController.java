@@ -1,21 +1,11 @@
 package com.huineey.blackpigproject.controller;
 
 import com.huineey.blackpigproject.model.Board;
-import com.huineey.blackpigproject.model.Store;
 import com.huineey.blackpigproject.repository.BoardRepository;
-import com.huineey.blackpigproject.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpResponse;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -24,9 +14,6 @@ class BoardApiController {
 
     @Autowired
     private BoardRepository boardRepository;
-
-    @Autowired
-    private StoreRepository storeRepository;
 
     @GetMapping("/boards")
     List<Board> all(@RequestParam(required = false, defaultValue = "") String title,
@@ -41,20 +28,6 @@ class BoardApiController {
     Board newBoard(@RequestBody Board newBoard) {
         return boardRepository.save(newBoard);
     }
-
-
-   /* @PostMapping("/boards/{id}")
-    Board SelectStore(@RequestParam String comment, @PathVariable Long id) {
-        //validation
-        Store store = storeRepository.findById(id).orElse(null);
-        //Board board = boardRepository.findOneById(id);
-        //String username = authentication.getName();
-        Comment newComment = new Comment();
-        newComment.setBoard(board);
-        newComment.setContent(comment);
-        newComment.setWriter(username);
-        return commentRepository.save(newComment);*/
-    //  }
 
     @GetMapping("/boards/{id}")
     Board one(@PathVariable Long id) {

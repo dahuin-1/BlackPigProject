@@ -6,8 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 
 @Entity
 @Data
@@ -28,6 +26,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "board_id", referencedColumnName = "id")
+    @JsonIgnore
     private Board board;
 
 
