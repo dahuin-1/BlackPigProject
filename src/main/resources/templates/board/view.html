@@ -130,7 +130,7 @@
     function myFunction(id) {
         alert("here");
         alert(id)
-        $.ajax({
+       /* $.ajax({
             url: '/api/comments/' + id,
             type: 'GET',
             data: {
@@ -140,9 +140,8 @@
                 console.log('result', result);
                 //window.location.reload();
             }
-        });
-        //const x = document.getElementById("editForm");
-        const x = comment;
+        });*/
+        const x = document.getElementById("editForm");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {

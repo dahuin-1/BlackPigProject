@@ -65,22 +65,20 @@ public class CommentApiController {
     @GetMapping("/comments/{id}")
     Comment one(@PathVariable Long id) {
         return commentRepository.findOneById(id);
-      //  return commentRepository.findById(id).orElse(null);
+        //  return commentRepository.findById(id).orElse(null);
     }
 
     @PutMapping("/comments/{id}")
-    Comment replaceComment(@RequestParam String newCommentText, @PathVariable Long id, Authentication authentication) {
-        Comment comment = commentRepository.findById(id).orElse(null);
-        Board board = boardService.getBoardByComment(id);
-       // Board board = commentRepository.findOneById(id).getBoard();
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElse(null);
-        Comment newComment = new Comment();
-        newComment.setBoard(board);
-        comment.setText(newCommentText);
-        comment.setUser(user);
-        comment.setDatetime(LocalDateTime.now());
-        return commentRepository.save(comment);
+    Comment replaceComment(@RequestParam Comment newComment, @PathVariable Long id) {
+        return commentRepository.findById(id)
+                .map(comment -> {
+                    comment.setText(newComment.getText());
+                    return commentRepository.save(comment);
+                })
+                .orElseGet(() -> {
+                    newComment.setId(id);
+                    return commentRepository.save(newComment);
+                });
     }
 
 }
