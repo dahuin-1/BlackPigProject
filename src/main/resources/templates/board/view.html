@@ -97,8 +97,10 @@
                                th:text="${#temporals.format(comment.datetime, 'yyyy-MM-dd HH:mm')}"></a><br>
                             <textarea class="form-control" name="editComment" id="editComment"
                                       th:text="${comment.text}"></textarea>
+                            <button id="edit_comment_btn" type="button" class="btn btn-dark"
+                                    th:onclick="|editComment(*{comment.id})|">작성</button>
                         </div>
-                        <button type="submit"> 등록</button>
+                        <!--<button type="submit"> 등록</button>-->
                     </div>
                     <div class="p-2 flex-shrink-1 bd-highlight">
                         <button type="button" class="btn btn-dark" th:onclick="|deleteComment(${comment.id})|">삭제
@@ -131,9 +133,9 @@
     });
 
     function myFunction(id) {
-        alert("here");
-        alert(id)
-        let comment;
+       // alert("here");
+       // alert(id)
+      //  let comment;
         const x = document.getElementById("editForm");
         if (x.style.display === "none") {
             x.style.display = "block";
