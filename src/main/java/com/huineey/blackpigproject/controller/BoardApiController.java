@@ -3,6 +3,7 @@ package com.huineey.blackpigproject.controller;
 import com.huineey.blackpigproject.model.Board;
 import com.huineey.blackpigproject.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
@@ -48,7 +49,7 @@ class BoardApiController {
                 });
     }
 
-    // @Secured("ROLE_ADMIN") //보안 취약 부분 고침
+    @Secured("ROLE_ADMIN") //보안 취약 부분 고침
     @DeleteMapping("/boards/{id}")
     void deleteBoard(@PathVariable Long id) {
         boardRepository.deleteById(id);
